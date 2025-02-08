@@ -116,3 +116,7 @@ button:focus-visible {
   font-size: 70px;
   font-weight: 500;
 }
+
+body {
+  background-color: #faf9f6;
+}
