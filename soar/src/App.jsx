@@ -51,6 +51,7 @@ function App() {
   const [user] = useAuthState(auth);
   return (
     user ? <Chat/> : <Registration/>
+    /*user ? <Registration/> : <Login/>*/
   );
 }
 
