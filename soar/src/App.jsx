@@ -45,15 +45,26 @@ import {auth} from './components/firebase';
 import {useAuthState} from 'react-firebase-hooks/auth';
 import Login from './components/login';
 import Registration from './components/Registration';
+import {registered} from './components/saveUser';
 import Chat from './components/chat';
 import Routing from './components/routing';
 
 function App() {
   const [user] = useAuthState(auth);
-  return (
+  {if (user) {
+    if (registered) {
+      return <Chat/>
+    } else {
+      return <Registration/>
+      }
+    } else {
+      return <Login/>
+    }
+  }
+  //return (
     // user ? <Chat/> : <Login/>
-    user ? <Routing/> : <Login/>
-  );
+    //user ? <Registration/> : <Login/>
+    //);
 }
 
 export default App

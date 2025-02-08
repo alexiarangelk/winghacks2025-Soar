@@ -17,7 +17,7 @@ const saveUser = (event) => {
     console.log(`saving ${event.target.first_name_input.value},
         ${event.target.last_name_input.value},
         ${event.target.organization.value}}`);
-    data_to_array(event);
+    data_to_array(event)
   } 
 
-export default saveUser;
+export default {saveUser, registered};
