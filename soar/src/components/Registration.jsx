@@ -1,5 +1,6 @@
 import { addUser } from "./firebase";
 import saveUser from "./saveUser";
+import './registration.css';
 
 const Registration = () => {
   
@@ -8,19 +9,18 @@ const Registration = () => {
       <title>Account Registration</title>
     </head>,
 
-    <>
-      <main>
+    <div className="form">
+    <div className="design"> 
       
-        <p>User Information</p>
+    </div>
+    <div className="registration">
+      <main>
+        <h1 className="Title">Matchmaking Info</h1>
           <form onSubmit={saveUser}/*action="/another_rout_nav_to"*/>
-            <p>First Name:</p>
-            <input id="first_name_input"/>
-
-            <p>Last Name:</p>
-            <input id="last_name_input"/>
-
-            <p>Organization:</p>
-            <label>Choose your organization:</label>
+            <input id="first_name_input" placeholder="First Name" className="input"/>
+            <input id="last_name_input" placeholder="Last Name" className="input"/>
+            {/* <p>Organization:</p>
+            <label>Choose your organization:</label> */}
             <select name="organization" id="organization">
               <option value="University_of_Florida">University of Florida</option>
               <option value="JP_Morgan_Chase_&_Co.">JP Morgan Chase & Co.</option>
@@ -130,7 +130,8 @@ const Registration = () => {
             <input type="submit" id="submit-button"/>
           </form>
       </main>
-    </>
+      </div>
+    </div>
   )
 }
 
