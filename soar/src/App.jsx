@@ -50,7 +50,7 @@ import Chat from './components/chat';
 function App() {
   const [user] = useAuthState(auth);
   return (
-    user ? <Chat/> : <Registration/>
+    user ? <Chat/> : <Login/>
   );
 }
 
