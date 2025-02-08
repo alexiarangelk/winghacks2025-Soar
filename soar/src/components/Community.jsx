@@ -4,11 +4,18 @@ import { useState } from 'react'
 import '../Community.css'
 import React from 'react';
 import FeatherIcon from 'feather-icons-react';
+import GroupChats from './GroupChats';
+import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 //arrow-up-right
 
 const Community = () => {
     // [count, setCount] = useState(0)
     const communityName = 'worldCommunity';
+    const navigate = useNavigate();
+    const handleClick = () => {
+        navigate('/GroupChats');
+    };
   return (
     <div className="page">
         {/* <h1>Community</h1> */}
@@ -22,7 +29,7 @@ const Community = () => {
                         were
                         were
                     </div>
-                    <button className="launchbutton">
+                    <button className="launchbutton" onClick={handleClick}>
                         <FeatherIcon icon="arrow-up-right" />
                     </button>
                 </div>
@@ -33,7 +40,7 @@ const Community = () => {
                         were
                         were
                     </div>
-                    <button className="launchbutton2">
+                    <button className="launchbutton2" onClick={handleClick}>
                         <FeatherIcon icon="arrow-up-right" />
                     </button>
                 </div>
@@ -50,7 +57,7 @@ const Community = () => {
                         were
                         were
                     </div>
-                    <button className="launchbutton">
+                    <button className="launchbutton" onClick={handleClick}>
                         <FeatherIcon icon="arrow-up-right" />
                     </button>
                 </div>
@@ -61,7 +68,7 @@ const Community = () => {
                         were
                         were
                     </div>
-                    <button className="launchbutton2">
+                    <button className="launchbutton2" onClick={handleClick}>
                         <FeatherIcon icon="arrow-up-right" />
                     </button>
                 </div>
