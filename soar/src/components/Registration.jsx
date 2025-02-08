@@ -1,3 +1,4 @@
+import { addUser } from "./firebase";
 import saveUser from "./saveUser";
 
 const Registration = () => {
