@@ -1,11 +1,132 @@
 .page {
     background-color: #FAF9F6;
+    padding: 15px 7%; 
+
 } 
 .topLargeWidget {
     background-color: #f5e6b8;
-    padding: 1vw;
-    margin: 1em;
+    padding: 1vw; 
+
+    /* //margin: 1em; */
     border-radius: 1em;
+    max-width: 500px;
+    /* max-height: 1000px; */
+    min-width: 300px;
+    min-height: 200px;
+    margin-bottom: -30px;
+}
+.topLargeWidget2 {
+    background-color: #f5e6b8;
+    padding: 1vw; 
+    /* //margin: 1em; */
+    border-radius: 1em;
+    min-width: 250px;
+    max-height: 100px;
+    margin-bottom: -30px;
+    /* margin-top: -30vh; */
+}
+.bottomLargeWidget2 {
+    background-color: #f5e6b8;
+    padding: 1vw; 
+
+    /* //margin: 1em; */
+    border-radius: 1em;
+    max-width: 500px;
+    /* max-height: 1000px; */
+    min-width: 300px;
+    min-height: 200px;
+    margin-top: 1vh;
+}
+.launchbutton:hover {
+    background-color: #43350b;
+}
+.launchbutton2{
+    margin-left: 2vh;
+    margin-top: 2%;
+    border-radius: 100%;
+    background-color: #1b1b1b;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 100px;
+    max-height: 300px;
+    color: #FAF9F6;
+}
+.launchbutton2:hover {
+    background-color: #43350b;
+
+}
+.topSmallWidget {
+    background-color: #f5b8db;
+    padding: 1vw; 
+    /* //margin: 1em; */
+    border-radius: 1em;
+    min-width: 250px;
+    max-height: 100px;
+    margin-top: -30vh;
+}
+.bottomSmallWidget {
+    background-color: #f5b8db;
+    padding: 1vw; 
+    /* //margin: 1em; */
+    border-radius: 1em;
+    min-width: 250px;
+    max-height: 100px;
+    margin-top: -30vh;
+}
+.launchbuttonSmall {
+    margin-left: 2vh;
+    margin-top: 13%;
+    border-radius: 100%;
+    background-color: #1b1b1b;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 100px;
+    max-height: 300px;
+    color: #FAF9F6;
+}
+.bottomLargeWidget {
+    background-color: #f5e6b8;
+    padding: 1vw; 
+    /* //margin: 1em; */
+    border-radius: 1em;
+    min-width: 250px;
+    max-height: 100px;
+    /* margin-top: -30vh; */
+
+}
+.bottomStyle {
+    display: inline-flex;
+}
+.launchbutton {
+    margin-left: 2vh;
+    margin-top: 13%;
+    border-radius: 100%;
+    background-color: #1b1b1b;
+    min-width: 50px;
+    min-height: 50px;
+    max-width: 100px;
+    max-height: 300px;
+    color: #FAF9F6;
+}
+.largeName {
+    font-size: 2vw;
+}
+.largeName2 {
+    font-size: 2vw;
+    padding-top: 9vh;
+}
+.left {
+    display: inline-flex;
+    /* justify-items: flex-start; */
+    /* margin-right: 2vw; */
+    /* justify-content: space-between; */
+}
+.largeWidget {
+    margin-right: 3vw;
+} 
+.smallWidget {
+    margin-left: 50%;
 }
 
 /* FAF9F6 */ 
+/* //scale down = min */
