@@ -1,7 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, collection, doc, getDoc, setDoc } from "firebase/firestore";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -19,5 +19,54 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
+
+export async function newUserCheck(userId) {
+
+  console.log("I exist in newUserCheck");
+  let userExists = undefined;
+
+  try {
+    const docRef = doc(db, "Users", userId); // Correct Firestore path
+    const docSnapshot = await getDoc(docRef); // Fetch single document
+
+    if (docSnapshot.exists()) {
+      console.log("Document found:", docSnapshot.data()); // Log document data
+      userExists = true;
+    } else {
+      console.log("Document doesn't exist."); // Log when document is not found
+      userExists = false;
+    }
+  } catch (error) {
+    console.error("Error fetching document:", error);
+  }
+
+  return userExists;
+}
+
+export async function addUser(userId, username, email, firstName, lastName) {
+  try {
+    await setDoc(doc(db, "Users", userId), {
+      username: username,
+      email: email,
+      firstName: firstName,
+      lastName: lastName
+    });
+    return false;
+  } catch (error) {
+    console.error("Error fetching document:", error);
+    return true;
+  }
+}
+
+function newPost(username, message){
+  //! WORK IN PROGRESS
+  const postId = 1;
+  return postId;
+}
+
+function addPostToId(userId, postId){
+  //! WORK IN PROGRESS
+  return;
+}
 
 export default app;

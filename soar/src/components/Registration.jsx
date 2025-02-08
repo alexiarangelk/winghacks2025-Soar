@@ -1,3 +1,5 @@
+import { addUser } from "./firebase";
+
 const Registration = () => {
 
   return (
