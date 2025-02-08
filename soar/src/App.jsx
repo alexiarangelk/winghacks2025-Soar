@@ -3,10 +3,11 @@ import {auth} from './components/firebase';
 import {useAuthState} from 'react-firebase-hooks/auth';
 import Login from './components/login';
 import Routing from './components/routing';
+import Registration from './components/Registration';
 
 function App() {
   const [user] = useAuthState(auth);
-  const registered = false;
+  const registered = true;
   return (
     // user ? <Chat/> : <Login/>
     //user ? <Routing/> : <Login/>
