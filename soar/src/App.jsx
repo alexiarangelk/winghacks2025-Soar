@@ -50,9 +50,16 @@ import Routing from './components/routing';
 
 function App() {
   const [user] = useAuthState(auth);
+  const registered = false;
   return (
     // user ? <Chat/> : <Login/>
-    user ? <Routing/> : <Login/>
+    //user ? <Routing/> : <Login/>
+
+    user ? 
+    registered?
+      <Routing/>
+    : <Registration/>
+    : <Login/>
   );
 }
 
