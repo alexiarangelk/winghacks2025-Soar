@@ -8,7 +8,6 @@ function App() {
   const [user] = useAuthState(auth);
   return (
     user ? <Routing/> : <Login/>
-
   );
 }
 
