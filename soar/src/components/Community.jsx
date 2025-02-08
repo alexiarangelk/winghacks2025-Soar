@@ -4,6 +4,9 @@ import { useState } from 'react'
 import '../Community.css'
 import React from 'react';
 import FeatherIcon from 'feather-icons-react';
+import GroupChats from './GroupChats';
+import { Link } from "react-router-dom";
+import { useNavigate } from 'react-router-dom';
 //arrow-up-right
 
 import {auth, newPost, addPostToId, replyToPost } from './firebase';
@@ -12,6 +15,12 @@ import {useAuthState} from 'react-firebase-hooks/auth';
 const Community = () => {
     const [user] = useAuthState(auth);
     const communityName = 'worldCommunity';
+
+    const navigate = useNavigate();
+    const handleClick = () => {
+        navigate('/GroupChats');
+    };
+
     let postId = "0";
 
     // Post function
@@ -51,7 +60,7 @@ const Community = () => {
                             <div className="descrip"> Joined: 2/2/24</div>
                         </div>
                     </div>
-                    <button className="launchbutton">
+                    <button className="launchbutton" onClick={handleClick}>
                         <FeatherIcon icon="arrow-up-right" />
                     </button>
                 </div>
@@ -64,7 +73,7 @@ const Community = () => {
                             <div className="descrip"> Joined: 12/1/24</div>
                         </div>
                     </div>
-                    <button className="launchbutton2">
+                    <button className="launchbutton2" onClick={handleClick}>
                         <FeatherIcon icon="arrow-up-right" />
                     </button>
                 </div>
@@ -83,7 +92,7 @@ const Community = () => {
                             <div className="descrip"> Joined: 3/6/24</div>
                         </div>
                     </div>
-                    <button className="launchbutton">
+                    <button className="launchbutton" onClick={handleClick}>
                         <FeatherIcon icon="arrow-up-right" />
                     </button>
                 </div>
@@ -96,7 +105,7 @@ const Community = () => {
                             <div className="descrip"> Joined: 1/1/24</div>
                         </div>
                     </div>
-                    <button className="launchbutton2">
+                    <button className="launchbutton2" onClick={handleClick}>
                         <FeatherIcon icon="arrow-up-right" />
                     </button>
                 </div>
