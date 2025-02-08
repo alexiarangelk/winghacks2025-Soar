@@ -4,7 +4,8 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { GoogleAuthProvider, signInWithPopup} from "firebase/auth";
 import '../login.css';
 
-import GoogleSignin from "../assets/Googlesignin.png";
+import GoogleSignin from "../assets/google_logo.png";
+import PaperPlane from "../assets/paper-plane.png";
 
 const Login = () => {
     const [user] = useAuthState(auth);
@@ -36,40 +37,22 @@ const Login = () => {
     
     return (
         <div className="loginMain">
-        <p>Login</p>
-        <div>
-        </div>
-        <h1>Hi! Welcome to Soar</h1>
-        <div className="login">
-        <form>
-            <label>
-               <input type="string" placeholder='Username'></input>
-
-            </label>
-            <label>
-                <input type="password" placeholder='Password'></input>
-            </label>
-            <div>
-            </div>
-            <button>Submit</button>
-        </form>
-            {/* <Canvas>
-                <Suspense fallback={null}>
-
-                    <Model />
-                </Suspense>
-            </Canvas> */}
-            <center>
-            <button className="sign-in">
+            <h1>Hi! Welcome to Soar</h1>
+            <div className="loginContent">
+                <button className = "signin-button" onClick={googleSignIn}>
+                    <img
+                        className = "sign-in-pic"
+                        src={GoogleSignin}
+                        alt="sign in with google"
+                    />
+                    <p className="sign-in-text">Sign in</p>
+                </button>
                 <img
-                    onClick={googleSignIn}
-                    src={GoogleSignin}
-                    alt="sign in with google"
-                    type="button"
+                    className="paper-plane"
+                    src={PaperPlane}
+                    alt="paper plane"
                 />
-            </button>
-            </center>
-        </div>
+            </div>
         </div>
     );
 }
