@@ -6,6 +6,7 @@ import Login from './login'
 import Community from './Community'
 import { Routes, Route } from 'react-router-dom'
 import Chat from './chat';
+import PublicPosts from './PublicPosts'
 
 const Routing = () => {
   return (
@@ -13,6 +14,7 @@ const Routing = () => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Community />} />
+        <Route path="/PublicPosts" element={<PublicPosts />} />
         <Route path="/Chat" element={<Chat />} />
       </Routes>
     </div>
