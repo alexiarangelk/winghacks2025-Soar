@@ -2,6 +2,7 @@ import React from 'react';
 import { auth } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { GoogleAuthProvider, signInWithPopup} from "firebase/auth";
+import '../login.css';
 
 import GoogleSignin from "../assets/Googlesignin.png";
 
@@ -34,7 +35,30 @@ const Login = () => {
     };
     
     return (
+        <div className="loginMain">
+        <p>Login</p>
         <div>
+        </div>
+        <h1>Hi! Welcome to Soar</h1>
+        <div className="login">
+        <form>
+            <label>
+               <input type="string" placeholder='Username'></input>
+
+            </label>
+            <label>
+                <input type="password" placeholder='Password'></input>
+            </label>
+            <div>
+            </div>
+            <button>Submit</button>
+        </form>
+            {/* <Canvas>
+                <Suspense fallback={null}>
+
+                    <Model />
+                </Suspense>
+            </Canvas> */}
             <center>
             <button className="sign-in">
                 <img
@@ -45,6 +69,7 @@ const Login = () => {
                 />
             </button>
             </center>
+        </div>
         </div>
     );
 }
