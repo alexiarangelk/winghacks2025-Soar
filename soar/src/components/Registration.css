@@ -1,0 +1,53 @@
+.design{
+    background-color: #e2dffc;
+    border-radius: 50px;
+    padding: 2vw;
+    margin-top: 14vh;
+    margin-left: 10vw;
+    min-width: 26vw;
+    min-height: 70vh;
+    margin-right: 5vw; 
+    margin-top: 14vh; 
+
+    display: inline-block;
+}
+.form {
+    display: inline-flex;
+}
+.registration {
+    align-items: center;
+    background-color: #e2dffc;
+    max-width: 50vw;
+    border-radius: 50px;
+    overflow: scroll;
+    max-height: 70vh;
+    max-width: 50vw;
+    float: right;
+    margin-right: 10vw;
+    margin-top: 14vh;
+    margin-left:5vw;
+    padding: 2vw 5vh 2vw 5vh;
+    /* align-items: ; */
+
+    /*ScrollBar*/
+     .-webkit-scrollbar {
+        display: none; /* for Chrome, Safari and Opera */
+    } 
+    /* display: none; */
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+}
+.Title {
+    text-align: center;
+    margin-bottom: 10px;
+}
+.input {
+    padding: 10px;
+    border-radius: 10px;
+    margin-right: 10px;
+    border:0;
+    opacity: 0.8;
+}
+.input:focus {
+    outline: none;
+}
