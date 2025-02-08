@@ -20,15 +20,23 @@
 import { Link } from "react-router-dom";
 //import reactLogo from './assets/react.svg'
 import '../index.css'
+import FeatherIcon from 'feather-icons-react';
+
 const Navbar = () => {
   return (
     <div className="navbar">
-      {/* <img src={reactLogo} alt="" width="130px"/> */}
-      <ul>
-        <Link to='/'><li>Community</li></Link>
-        <Link to='/Chat'><li>Chat</li></Link>
-      </ul>
-      <button>Get Started</button>
+      <h1>SOAR</h1>
+        <div>
+          <div className="temp">
+            <Link to='/' className="linkrouter"><li>Community</li></Link>
+            </div>
+            <div className="temp">
+            <Link to='/Chat' className="linkrouter"><li>Chat</li></Link>
+            </div>
+          </div>
+      <button className="profile">
+        <FeatherIcon icon="user" />
+      </button>
     </div>
   );
 }
