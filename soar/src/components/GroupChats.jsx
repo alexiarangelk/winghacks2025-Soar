@@ -1,5 +1,5 @@
 import React from 'react'
-import './GroupChats.css'
+import '../GroupChats.css'
 import { useState } from 'react';
 
 const GroupChats = () => {
