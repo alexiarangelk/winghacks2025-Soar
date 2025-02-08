@@ -13,7 +13,19 @@
 }
 .form {
     display: inline-flex;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
+
+select {
+    color:black;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    background-color: aliceblue;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
+    border: none;
+}
+
 .registration {
     align-items: center;
     background-color: #e2dffc;
@@ -42,12 +54,30 @@
     margin-bottom: 10px;
 }
 .input {
+    background-color: aliceblue;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     padding: 10px;
     border-radius: 10px;
     margin-right: 10px;
     border:0;
     opacity: 0.8;
+    margin: 5px;
 }
 .input:focus {
     outline: none;
+}
+
+.button-submit {
+    background-color:aliceblue;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    border: none;
+    border-radius: 10px;
+    min-width: 70px;
+    min-height: 30px;
+    padding: 10px;
+    margin: 10px;
+}
+
+p {
+    padding:2vh;
 }
