@@ -1,0 +1,18 @@
+.loginMain {
+    margin-left: 10vw;
+    /* margin-top: ; */
+}
+.loginMain h1 {
+    margin-bottom: 3vh;
+}
+.login {
+    display: block;
+    /* margin-left: 10vw; */
+}
+.login input {
+    height: 4vh;
+    border-radius: 3vh;
+    display: block;
+    margin-bottom: 3vh;
+    padding-left: 1%;
+}
