@@ -44,12 +44,13 @@ import React from 'react';
 import {auth} from './components/firebase';
 import {useAuthState} from 'react-firebase-hooks/auth';
 import Login from './components/login';
+import Registration from './components/Registration';
 import Chat from './components/chat';
 
 function App() {
   const [user] = useAuthState(auth);
   return (
-    user ? <Chat/> : <Login/>
+    user ? <Chat/> : <Registration/>
   );
 }
 
