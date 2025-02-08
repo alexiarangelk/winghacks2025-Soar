@@ -1,5 +1,5 @@
 import React from 'react';
-import { auth } from "./firebase";
+import { auth, newUserCheck, addUser} from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { GoogleAuthProvider, signInWithPopup} from "firebase/auth";
 import '../login.css';
@@ -21,6 +21,20 @@ const Login = () => {
             // The signed-in user info.
             const user = result.user;
             console.log(user);
+            const userExists = newUserCheck(user.uid).then((userExists) => {
+                console.log(`Does the user exist? ${userExists}`)
+                if (!userExists){
+                    const err = addUser(user.uid, user.displayName, user.email, "Alexia", "RK").then((userExists) => {
+                        if (err){
+                            //handle the error
+                        }
+                        else{
+                            //continue code
+                        }
+                    });
+                }
+            });
+
             // IdP data available using getAdditionalUserInfo(result)
             // ...
           }).catch((error) => {
