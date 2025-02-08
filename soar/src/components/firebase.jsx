@@ -50,7 +50,8 @@ export async function addUser(userId, username, email, firstName, lastName) {
       email: email,
       firstName: firstName,
       lastName: lastName,
-      posts: []
+      posts: [],
+      groups: ["WingHacks", "McDonalds", "Back-End Programming"]
     });
     return false;
   } catch (error) {
@@ -79,7 +80,6 @@ export async function newPost(username, message){
 }
 
 export async function addPostToId(userId, postId){
-  //! WORK IN PROGRESS
   console.log("Adding post to the id");
 
   try {
