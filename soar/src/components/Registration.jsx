@@ -21,6 +21,7 @@ const Registration = () => {
       const universityOfFlorida = formData.get("University_of_Florida");
       const jPMorganChaseCo = formData.get("JP_Morgan_Chase_&_Co.");
       const bNYMellon = formData.get("BNY_Mellon");
+      const softwareEngineering = formData.get("Software_Engineering");
       const organizations = [];
       if (universityOfFlorida != null){
         organizations.push(universityOfFlorida);
@@ -30,6 +31,9 @@ const Registration = () => {
       }
       if (bNYMellon != null){
         organizations.push(bNYMellon);
+      }
+      if (softwareEngineering != null){
+        organizations.push(softwareEngineering);
       }
 
       const mentor = formData.get("mentor");
@@ -47,6 +51,7 @@ const Registration = () => {
         if (checkbox.name != "University_of_Florida"
           && checkbox.name != "JP_Morgan_Chase_&_Co."
           && checkbox.name != "BNY_Mellon"
+          && checkbox.name != "Software_Engineering"
         ){
           matchingSequence.push(checkbox.checked); // true if checked, false otherwise
         }
@@ -97,11 +102,13 @@ const Registration = () => {
             <input name="last_name_input" placeholder="Last Name" className="input"/>
             <label>Choose your organization:</label>
             <input type="checkbox" id="University_of_Florida" name="University_of_Florida" value="University_of_Florida"/>
-            <label htmlFor="technology">University of Florida</label><br/>
+            <label htmlFor="University_of_Florida">University of Florida</label><br/>
             <input type="checkbox" id="JP_Morgan_Chase_&_Co." name="JP_Morgan_Chase_&_Co." value="JP_Morgan_Chase_&_Co."/>
-            <label htmlFor="finance">JP Morgan Chase & Co.</label><br/>
+            <label htmlFor="JP_Morgan_Chase_&_Co.">JP Morgan Chase & Co.</label><br/>
             <input type="checkbox" id="BNY_Mellon" name="BNY_Mellon" value="BNY_Mellon"/>
-            <label htmlFor="healthcare">BNY Mellon</label><br/>
+            <label htmlFor="BNY_Mellon">BNY Mellon</label><br/>
+            <input type="checkbox" id="Software_Engineering" name="Software_Engineering" value="BNY_Mellon"/>
+            <label htmlFor="Software_Engineering">Software Engineering</label><br/>
 
             <p>Mentor/Mentee Questionnaire</p>
 

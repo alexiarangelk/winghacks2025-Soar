@@ -20,6 +20,8 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 
+//~============================= For Reading and Entering into Database ============================= 
+
 export async function newUserCheck(userId) {
 
   console.log("I exist in newUserCheck");
@@ -122,7 +124,7 @@ export async function replyToPost(postId, username, message){
     if (docSnapshot.exists()) {
       console.log("Document found:", docSnapshot.data()); // Log document data
 
-      const count = docSnapshot.get("count") + 1; // Get the count of messages
+      const count = (parseInt(docSnapshot.get("count")) + 1).toString(); // Get the count of messages
       console.log(`count is ${count}`);
 
       await updateDoc(doc(db, "Posts", postId), {
@@ -152,7 +154,7 @@ export async function addToOrg(orgId, postId){
     if (docSnapshot.exists()) {
       console.log("Document found:", docSnapshot.data()); // Log document data
 
-      const count = docSnapshot.get("count") + 1; // Get the count of messages
+      const count = (parseInt(docSnapshot.get("count")) + 1).toString(); // Get the count of messages
       console.log(`count is ${count}`);
 
       await updateDoc(docRef, {
@@ -173,6 +175,78 @@ export async function addToOrg(orgId, postId){
   } catch (error) {
     console.error("Error fetching document:", error);
     return true;
+  }
+}
+
+//~============================= For Filling In the WebPage ============================= 
+
+export async function getOrgPosts(orgId){
+  try {
+    //grab organization postIds
+    const docRef = doc(db, "Organizations", orgId); // Correct Firestore path
+    const docSnapshot = await getDoc(docRef); // Fetch single document
+
+    if (docSnapshot.exists()) {
+      //console.log("Document found:", docSnapshot.data()); // Log document data
+
+      const count = (parseInt(docSnapshot.get("count"))).toString(); // Get the count of messages
+      //console.log(`count is ${count}`);
+
+      let postIdsArray = [];
+      for (let i = 1; i <= count; i++) {
+        const postId = docSnapshot.get(i.toString());
+        //console.log(`item ${i} is ${postId}`);
+        postIdsArray.push(postId);
+      }
+
+      return postIdsArray;
+
+    } else {
+      console.log("Document doesn't exist.");
+      return [];
+  }
+  } catch (error) {
+    console.error("Error fetching document:", error);
+    return [];
+  }
+}
+
+export async function getPostMessages(postId){
+  try {
+    //Iterate postIds
+    const docRef = doc(db, "Posts", postId); // Correct Firestore path
+    const docSnapshot = await getDoc(docRef); // Fetch single document
+
+    if (docSnapshot.exists()) {
+      //console.log("Document found:", docSnapshot.data()); // Log document data
+
+      const count = docSnapshot.get("count"); // Get the count of messages
+      //console.log(`count is ${count}`);
+
+      let messageArray = [];
+      for (let i = 1; i <= count; i++) {
+        if (i == 1){
+          //dealing with the first entry, it'll have 4 entries
+          let firstArray = docSnapshot.get(i.toString());
+          //console.log(firstArray);
+          messageArray.push(firstArray);
+        }
+        else{
+          let replyArray = docSnapshot.get(i.toString());
+          //console.log(replyArray);
+          messageArray.push(replyArray);
+        }
+      }
+
+      return messageArray;
+
+    } else {
+      console.log("Document doesn't exist.");
+      return [];
+  }
+  } catch (error) {
+    console.error("Error fetching document:", error);
+    return [];
   }
 }
 
