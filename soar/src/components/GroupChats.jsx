@@ -2,9 +2,19 @@ import React from 'react'
 import '../GroupChats.css'
 import { useState } from 'react';
 import ListComponent from './ListComponent';
+import { useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
-const GroupChats = () => {
+import {auth, newPost, addPostToId, replyToPost, addToOrg, 
+    getOrgPosts, getPostMessages } from './firebase';
+  import {useAuthState} from 'react-firebase-hooks/auth';
+
+const GroupChats = ({route}) => {
+    //const {orgName} = route.params;
     //get data
+    const location = useLocation();
+    const [user] = useAuthState(auth);
+    const { org } = location.state || {};
     const [showList, setShowList] = useState(false);
     const [topic, setTopic] = useState('Topic');
     const items = ['Item 1', 'Item 2', 'Item 3'];
@@ -32,10 +42,47 @@ const GroupChats = () => {
     const[groupName, setGroupName] = useState('GroupName');
     const[convoName, setConvoName] = useState('How to network?');
 
+
+    useEffect(() => {
+        const organization = async () => {
+            const postIdsArray = await getOrgPosts(org);
+            for (let i = 0; i < postIdsArray.length ; i++){
+            /* 
+            fyi, the array looks like
+            messageArray = [timestamp, username, subject, message], <-- only the first message
+                            [timestamp, username, message],
+                            ...
+                            [timestamp, username, message]
+            They are organized in order of when the message sent
+            */
+            const messageArray = await getPostMessages(postIdsArray[i]);
+            for (let j = 0; j < messageArray.length ; j++){
+                if (j == 0){
+                const time = messageArray[j].timestamp;
+                const username = messageArray[j].username;
+                const subject = messageArray[j].subject;
+                const message = messageArray[j].message;
+                console.log(`Initial Post: ${time}, ${username}, ${subject}, ${message}`);
+                }
+                else{
+                const time = messageArray[j].timestamp;
+                const username = messageArray[j].username;
+                const message = messageArray[j].message;
+                console.log(`Reply Post: ${time}, ${username}, ${message}`);
+                }
+            }
+        }
+        };
+        organization();
+    }, []);
+    
+    
+
   return (
     <div className="page">
         <div className="title"> 
-            <p className="welcome">Welcome to the {groupName} community</p>
+
+            <p className="welcome">Welcome to the {org} community</p>
             <button className="add" onClick={openTextBox}>Add Post</button>
                 {isTextBoxVisible && (
                     <div className="type-box">
@@ -90,5 +137,6 @@ const GroupChats = () => {
     </div>
   )
 }
+
 
 export default GroupChats
