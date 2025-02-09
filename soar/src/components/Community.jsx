@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router-dom';
 //arrow-up-right
 
 import {auth, newPost, addPostToId, replyToPost, addToOrg, 
-  getOrgPosts } from './firebase';
+  getOrgPosts, getPostMessages } from './firebase';
 import {useAuthState} from 'react-firebase-hooks/auth';
 
 const Community = () => {
@@ -29,22 +29,126 @@ const Community = () => {
     const organization1 = async () => {
       console.log(`${user.uid} is in University of Florida`);
       organization = 1;
-      postId = await getOrgPosts("University of Florida");
+      const postIdsArray = await getOrgPosts("University of Florida");
+      for (let i = 0; i < postIdsArray.length ; i++){
+        /* 
+        fyi, the array looks like
+        messageArray = [timestamp, username, subject, message], <-- only the first message
+                        [timestamp, username, message],
+                        ...
+                        [timestamp, username, message]
+        They are organized in order of when the message sent
+        */
+        const messageArray = await getPostMessages(postIdsArray[i]);
+        for (let j = 0; j < messageArray.length ; j++){
+          if (j == 0){
+            const time = messageArray[j].timestamp;
+            const username = messageArray[j].username;
+            const subject = messageArray[j].subject;
+            const message = messageArray[j].message;
+            console.log(`Initial Post: ${time}, ${username}, ${subject}, ${message}`);
+          }
+          else{
+            const time = messageArray[j].timestamp;
+            const username = messageArray[j].username;
+            const message = messageArray[j].message;
+            console.log(`Reply Post: ${time}, ${username}, ${message}`);
+          }
+        }
+      }
     };
     const organization2 = async () => {
       console.log(`${user.uid} is in JP Morgan Chase & Co.`);
       organization = 2;
-      postId = await getOrgPosts("JP Morgan Chase & Co.");
+      const postIdsArray = await getOrgPosts("JP Morgan Chase & Co.");
+      for (let i = 0; i < postIdsArray.length ; i++){
+        /* 
+        fyi, the array looks like
+        messageArray = [timestamp, username, subject, message], <-- only the first message
+                        [timestamp, username, message],
+                        ...
+                        [timestamp, username, message]
+        They are organized in order of when the message sent
+        */
+        const messageArray = await getPostMessages(postIdsArray[i]);
+        for (let j = 0; j < messageArray.length ; j++){
+          if (j == 0){
+            const time = messageArray[j].timestamp;
+            const username = messageArray[j].username;
+            const subject = messageArray[j].subject;
+            const message = messageArray[j].message;
+            console.log(`Initial Post: ${time}, ${username}, ${subject}, ${message}`);
+          }
+          else{
+            const time = messageArray[j].timestamp;
+            const username = messageArray[j].username;
+            const message = messageArray[j].message;
+            console.log(`Reply Post: ${time}, ${username}, ${message}`);
+          }
+        }
+      }
     };
     const organization3 = async () => {
       console.log(`${user.uid} is in BNY Mellon`);
       organization = 3;
-      postId = await getOrgPosts("BNY Mellon");
+      const postIdsArray = await getOrgPosts("BNY Mellon");
+      for (let i = 0; i < postIdsArray.length ; i++){
+        /* 
+        fyi, the array looks like
+        messageArray = [timestamp, username, subject, message], <-- only the first message
+                        [timestamp, username, message],
+                        ...
+                        [timestamp, username, message]
+        They are organized in order of when the message sent
+        */
+        const messageArray = await getPostMessages(postIdsArray[i]);
+        for (let j = 0; j < messageArray.length ; j++){
+          if (j == 0){
+            const time = messageArray[j].timestamp;
+            const username = messageArray[j].username;
+            const subject = messageArray[j].subject;
+            const message = messageArray[j].message;
+            console.log(`Initial Post: ${time}, ${username}, ${subject}, ${message}`);
+          }
+          else{
+            const time = messageArray[j].timestamp;
+            const username = messageArray[j].username;
+            const message = messageArray[j].message;
+            console.log(`Reply Post: ${time}, ${username}, ${message}`);
+          }
+        }
+      }
     };
     const organization4 = async () => {
       console.log(`${user.uid} is in Software Engineering`);
       organization = 4;
-      postId = await getOrgPosts("Software Engineering");
+      const postIdsArray = await getOrgPosts("Software Engineering");
+      for (let i = 0; i < postIdsArray.length ; i++){
+        /* 
+        fyi, the array looks like
+        messageArray = [timestamp, username, subject, message], <-- only the first message
+                        [timestamp, username, message],
+                        ...
+                        [timestamp, username, message]
+        They are organized in order of when the message sent
+        */
+        const messageArray = await getPostMessages(postIdsArray[i]);
+        for (let j = 0; j < messageArray.length ; j++){
+          if (j == 0){
+            const time = messageArray[j].timestamp;
+            const username = messageArray[j].username;
+            const subject = messageArray[j].subject;
+            const message = messageArray[j].message;
+            console.log(`Initial Post: ${time}, ${username}, ${subject}, ${message}`);
+          }
+          else{
+            const time = messageArray[j].timestamp;
+            const username = messageArray[j].username;
+            const message = messageArray[j].message;
+            console.log(`Reply Post: ${time}, ${username}, ${message}`);
+          }
+        }
+      }
     };
 
     // Post function
