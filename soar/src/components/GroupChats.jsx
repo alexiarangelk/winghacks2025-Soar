@@ -134,8 +134,8 @@ const GroupChats = ({route}) => {
         setPostId(newId);
         console.log(`${postId} is your new post`);
         if (newId != "0"){
-        let err = await addPostToId(user.uid, postId);
-        err = await addToOrg(org, postId);
+        let err = await addPostToId(user.uid, newId);
+        err = await addToOrg(org, newId);
         }
     }
 
