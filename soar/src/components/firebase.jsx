@@ -187,28 +187,67 @@ export async function getOrgPosts(orgId){
     const docSnapshot = await getDoc(docRef); // Fetch single document
 
     if (docSnapshot.exists()) {
-      console.log("Document found:", docSnapshot.data()); // Log document data
+      //console.log("Document found:", docSnapshot.data()); // Log document data
 
-      const count = docSnapshot.get("count"); // Get the count of messages
-      console.log(`count is ${count}`);
+      const count = (parseInt(docSnapshot.get("count"))).toString(); // Get the count of messages
+      //console.log(`count is ${count}`);
 
       let postIdsArray = [];
       for (let i = 1; i <= count; i++) {
         const postId = docSnapshot.get(i.toString());
-        console.log(`item ${i} is ${postId}`);
+        //console.log(`item ${i} is ${postId}`);
         postIdsArray.push(postId);
       }
 
+      return postIdsArray;
+
     } else {
       console.log("Document doesn't exist.");
-      return true;
+      return [];
   }
   } catch (error) {
     console.error("Error fetching document:", error);
-    return true;
+    return [];
   }
-  //Iterate postIds
-  //array of all the messages/replies
+}
+
+export async function getPostMessages(postId){
+  try {
+    //Iterate postIds
+    const docRef = doc(db, "Posts", postId); // Correct Firestore path
+    const docSnapshot = await getDoc(docRef); // Fetch single document
+
+    if (docSnapshot.exists()) {
+      //console.log("Document found:", docSnapshot.data()); // Log document data
+
+      const count = docSnapshot.get("count"); // Get the count of messages
+      //console.log(`count is ${count}`);
+
+      let messageArray = [];
+      for (let i = 1; i <= count; i++) {
+        if (i == 1){
+          //dealing with the first entry, it'll have 4 entries
+          let firstArray = docSnapshot.get(i.toString());
+          //console.log(firstArray);
+          messageArray.push(firstArray);
+        }
+        else{
+          let replyArray = docSnapshot.get(i.toString());
+          //console.log(replyArray);
+          messageArray.push(replyArray);
+        }
+      }
+
+      return messageArray;
+
+    } else {
+      console.log("Document doesn't exist.");
+      return [];
+  }
+  } catch (error) {
+    console.error("Error fetching document:", error);
+    return [];
+  }
 }
 
 export default app;
