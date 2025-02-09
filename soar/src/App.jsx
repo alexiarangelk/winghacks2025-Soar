@@ -7,7 +7,7 @@ import Registration from './components/Registration';
 
 function App() {
   const [user] = useAuthState(auth);
-  const registered = false;  //false: see registration
+  const registered = true;  //false: see registration
   return (
     // user ? <Chat/> : <Login/>
     //user ? <Routing/> : <Login/>

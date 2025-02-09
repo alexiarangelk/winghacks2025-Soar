@@ -50,11 +50,11 @@ const Community = () => {
         </button>
         <div className="left">
             <div className="largeWidget"> 
-                <div className="topLargeWidget">
+                <div className="topLargeWidget" style={{background: "#43c6ac"}}>
                     <p className="largeName">Software Development</p>
                 </div>
                 <div className="bottomStyle">
-                    <div className="bottomLargeWidget">
+                    <div className="bottomLargeWidget" style={{background: "linear-gradient(185deg, #43c6ac 30%, #f8ffae"}}>
                     <div className="barsBottom">
                             <div className="descrip">20,000 members</div>
                             <div className="descrip"> Joined: 2/2/24</div>
@@ -67,7 +67,7 @@ const Community = () => {
             </div>
             <div className="largeWidget"> 
                 <div className="bottomStyle">
-                    <div className="topLargeWidget2">
+                    <div className="topLargeWidget2" style={{background: "#4673b6"}}>
                         <div className="bars">
                             <div className="descrip">15 members</div>
                             <div className="descrip"> Joined: 12/1/24</div>
@@ -77,39 +77,39 @@ const Community = () => {
                         <FeatherIcon icon="arrow-up-right" />
                     </button>
                 </div>
-                <div className="bottomLargeWidget2">
+                <div className="bottomLargeWidget2" style={{background: "linear-gradient(185deg, #4673b6 30%,rgb(179, 247, 247)"}}>
                     <p className="largeName2">Software Development</p>
                 </div>    
             </div>
             <div className="largeWidget"> 
-                <div className="topLargeWidget">
+                <div className="topLargeWidget" style={{background: "#b6c1f6"}}>
                     <p className="largeName">Leadership</p>
                 </div>
                 <div className="bottomStyle">
-                    <div className="bottomLargeWidget">
+                    <div className="bottomLargeWidget" style={{background: "linear-gradient(185deg, #b6c1f6 30%, #ffc3a0"}}>
                         <div className="barsBottom">
                             <div className="descrip">100 members</div>
                             <div className="descrip"> Joined: 3/6/24</div>
                         </div>
                     </div>
-                    <button className="launchbutton" onClick={handleClick}>
+                    <button className="launchbutton" onClick={handleClick} >
                         <FeatherIcon icon="arrow-up-right" />
                     </button>
                 </div>
             </div>
             <div className="largeWidget"> 
                 <div className="bottomStyle">
-                    <div className="topLargeWidget2">
+                    <div className="topLargeWidget2" style={{background: "#a7f4dd"}}>
                         <div className="bars">
                             <div className="descrip">200 members</div>
                             <div className="descrip"> Joined: 1/1/24</div>
                         </div>
                     </div>
-                    <button className="launchbutton2" onClick={handleClick}>
+                    <button className="launchbutton2" onClick={handleClick} >
                         <FeatherIcon icon="arrow-up-right" />
                     </button>
                 </div>
-                <div className="bottomLargeWidget2">
+                <div className="bottomLargeWidget2" style={{background: "linear-gradient(185deg, #a7f4dd 35%, #105549"}}>
                     <p className="largeName2">Software Development</p>
                 </div>    
             </div>
