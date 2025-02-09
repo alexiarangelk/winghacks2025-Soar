@@ -32,7 +32,7 @@
     margin-top: 1vh;
 }
 .launchbutton:hover {
-    background-color: #43350b;
+    background-color: #959493;
 }
 .launchbutton2{
     margin-left: 2vh;
@@ -44,10 +44,10 @@
     max-width: 100px;
     max-height: 300px;
     color: #FAF9F6;
+    border: 0;
 }
 .launchbutton2:hover {
-    background-color: #43350b;
-
+    background-color: #959493;
 }
 .bottomLargeWidget {
     background-color: #f5e6b8;
@@ -69,6 +69,7 @@
     min-height: 50px;
     max-width: 100px;
     max-height: 300px;
+    border:0;
     color: #FAF9F6;
 }
 .largeName {
@@ -95,7 +96,7 @@
     margin-top: 2vh;
 }
 .descrip {
-    font-size: 15px;
+    font-size: 13px;
     border-radius: 20px;
     background-color: #FAF9F6;
     text-align: center;

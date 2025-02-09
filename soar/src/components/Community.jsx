@@ -78,7 +78,7 @@ const Community = () => {
                     <div className="bottomLargeWidget" style={{background: "linear-gradient(185deg, #43c6ac 30%, #f8ffae"}}>
                     <div className="barsBottom">
                             <div className="descrip">20,000 members</div>
-                            <div className="descrip"> Joined: 2/2/24</div>
+                            <div className="descrip">Joined: 2/2/24</div>
                         </div>
                     </div>
                     <button className="launchbutton" onClick={handleClick}>
@@ -91,7 +91,7 @@ const Community = () => {
                     <div className="topLargeWidget2" style={{background: "#4673b6"}}>
                         <div className="bars">
                             <div className="descrip">15 members</div>
-                            <div className="descrip"> Joined: 12/1/24</div>
+                            <div className="descrip">Joined: 12/1/24</div>
                         </div>
                     </div>
                     <button className="launchbutton2" onClick={handleClick}>
@@ -110,7 +110,7 @@ const Community = () => {
                     <div className="bottomLargeWidget" style={{background: "linear-gradient(185deg, #b6c1f6 30%, #ffc3a0"}}>
                         <div className="barsBottom">
                             <div className="descrip">100 members</div>
-                            <div className="descrip"> Joined: 3/6/24</div>
+                            <div className="descrip">Joined: 3/6/24</div>
                         </div>
                     </div>
                     <button className="launchbutton" onClick={handleClick} >
@@ -123,7 +123,7 @@ const Community = () => {
                     <div className="topLargeWidget2" style={{background: "#a7f4dd"}}>
                         <div className="bars">
                             <div className="descrip">200 members</div>
-                            <div className="descrip"> Joined: 1/1/24</div>
+                            <div className="descrip">Joined: 1/1/24</div>
                         </div>
                     </div>
                     <button className="launchbutton2" onClick={handleClick} >
