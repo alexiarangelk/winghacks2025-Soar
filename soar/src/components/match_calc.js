@@ -1,34 +1,34 @@
-const my_response = ["mentee", "UF", "12345", true, true, true, true, true];
+const my_response = [true, "mentee", "UF", "12345", true, true, true, true, true];
 const other_responses = [
-    ["mentee", "UF", "4568", true, true, true, true, false],
-    ["mentor", "idk", "943849", true, true, false, true, true],
-    ["mentee", "UF", "3294942", true, false, true, false, true],
-    ["mentor", "UF", "119239", true, true, false, false, false],
-    ["mentee", "idk", "2182139", true, true, false, false, false]
+    [true, "mentee", "UF", "4568", true, true, true, true, false],
+    [false, "mentor", "idk", "943849", true, true, false, true, true],
+    [true, "mentee", "UF", "3294942", true, false, true, false, true],
+    [false, "mentor", "UF", "119239", true, true, false, false, false],
+    [true, "mentee", "idk", "2182139", true, true, false, false, false]
 ];
 
-const MatchCalc = (the_user, potential_matches, limit) => {
+const MatchCalc = (the_user, potential_matches) => {
     var all_percentages = [];
     var indiv_percentage = [];
     
     for (var i=0; i<potential_matches.length; i++) {
 
-        if (potential_matches[i][0] == the_user[0]) {
+        if (potential_matches[i][1] == the_user[1]) {
             continue;
         };
 
-        if (limit == true && potential_matches[i][1] != the_user[1]) {
+        if ((potential_matches[i][0] == true || the_user[0] == true) && potential_matches[i][2] != the_user[2]) {
             continue;
         };
 
         var score = 0;
-        indiv_percentage.push(potential_matches[i][2]);
-        for (var j=3; j<potential_matches[i].length; j++) {
+        indiv_percentage.push(potential_matches[i][3]);
+        for (var j=4; j<potential_matches[i].length; j++) {
             if (the_user[j] == potential_matches[i][j]) {
                 score++;
             };
         };
-        var percentage = score*100/(potential_matches[i].length-3);
+        var percentage = score*100/(potential_matches[i].length-4);
         indiv_percentage.push(percentage);
         all_percentages.push(indiv_percentage);
         indiv_percentage = [];
