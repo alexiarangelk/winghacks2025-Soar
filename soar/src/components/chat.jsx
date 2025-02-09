@@ -17,11 +17,11 @@ const Chat = () => {
             console.log(item);
           });
 
-        console.log(item);
-        const otherResponses = await getMyQuizResults(user.uid);
-        otherResponses.forEach(function(item) {
-            console.log(item);
-          });
+        // console.log(item);
+        // const otherResponses = await getMyQuizResults(user.uid);
+        // otherResponses.forEach(function(item) {
+        //     console.log(item);
+        //   });
     };
     
     return (
