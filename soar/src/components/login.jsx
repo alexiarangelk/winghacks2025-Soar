@@ -50,7 +50,8 @@ const Login = () => {
     
     return (
         <div className="loginMain">
-            <h1>Hi! Welcome to Soar</h1>
+            <h1 className="soar">Hi! Welcome to Soar</h1>
+            
             <div className="loginContent">
                 <button className = "signin-button" onClick={googleSignIn}>
                     <img
