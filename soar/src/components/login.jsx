@@ -4,11 +4,14 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { GoogleAuthProvider, signInWithPopup} from "firebase/auth";
 import '../login.css';
 
+import { useNavigate } from 'react-router-dom'
+
 import GoogleSignin from "../assets/google_logo.png";
 import PaperPlane from "../assets/paper-plane.png";
 
 const Login = () => {
     const [user] = useAuthState(auth);
+    const navigate = useNavigate();
 
     // Sign in with google
     const googleSignIn = () => {
@@ -24,14 +27,10 @@ const Login = () => {
             const userExists = newUserCheck(user.uid).then((userExists) => {
                 console.log(`Does the user exist? ${userExists}`)
                 if (!userExists){
-                    const err = addUser(user.uid, user.displayName, user.email, "Alexia", "RK").then((userExists) => {
-                        if (err){
-                            //handle the error
-                        }
-                        else{
-                            //continue code
-                        }
-                    });
+                    navigate('/Registration');
+                }
+                else{
+                    navigate('/Community');
                 }
             });
 

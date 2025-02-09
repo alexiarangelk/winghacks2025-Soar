@@ -140,4 +140,8 @@ export async function replyToPost(postId, username, message){
   }
 }
 
+export async function addToGroup(groupId, postId){
+  
+}
+
 export default app;

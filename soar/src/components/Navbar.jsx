@@ -28,7 +28,7 @@ const Navbar = () => {
       <h1>SOAR</h1>
         <div>
           <div className="temp">
-            <Link to='/' className="linkrouter"><li>Community</li></Link>
+            <Link to='/Community' className="linkrouter"><li>Community</li></Link>
             </div>
             <div className="temp">
             <Link to='/Chat' className="linkrouter"><li>Chat</li></Link>
