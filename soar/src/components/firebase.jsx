@@ -111,8 +111,6 @@ export async function addPostToId(userId, postId){
     console.error("Error fetching document:", error);
     return true;
   }
-  
-  return;
 }
 
 export async function replyToPost(postId, username, message){
@@ -146,8 +144,36 @@ export async function replyToPost(postId, username, message){
   }
 }
 
-export async function addToGroup(groupId, postId){
-  
+export async function addToOrg(orgId, postId){
+  try {
+    const docRef = doc(db, "Organizations", orgId); // Correct Firestore path
+    const docSnapshot = await getDoc(docRef); // Fetch single document
+
+    if (docSnapshot.exists()) {
+      console.log("Document found:", docSnapshot.data()); // Log document data
+
+      const count = docSnapshot.get("count") + 1; // Get the count of messages
+      console.log(`count is ${count}`);
+
+      await updateDoc(docRef, {
+        [count]: postId,
+        count: count
+      }), { merge: true };
+      return false;
+
+    } else {
+      console.log("Document doesn't exist."); // Log when document is not found
+      await setDoc(docRef, {
+        1: postId,
+        count: 1
+      });
+      
+      return false;
+    }
+  } catch (error) {
+    console.error("Error fetching document:", error);
+    return true;
+  }
 }
 
 export default app;
