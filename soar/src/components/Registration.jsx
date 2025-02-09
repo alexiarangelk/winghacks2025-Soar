@@ -1,8 +1,84 @@
-import { addUser } from "./firebase";
-import saveUser from "./saveUser";
-import './registration.css';
+import { auth, addUser } from "./firebase";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from 'react-router-dom'
+import '../registration.css';
+import { or } from "firebase/firestore";
+import RegistrationDoodle from '../assets/registration-doodle-plane.png';
 
 const Registration = () => {
+  const [user] = useAuthState(auth);
+  const navigate = useNavigate();
+
+  // submit function
+  async function submit(formData) {
+
+    console.log(`${user.uid} is submitting`);
+
+      const firstName = formData.get("first_name_input");
+      const lastName = formData.get("last_name_input");
+      const limitOrg = formData.get("limitorg");
+
+      const universityOfFlorida = formData.get("University_of_Florida");
+      const jPMorganChaseCo = formData.get("JP_Morgan_Chase_&_Co.");
+      const bNYMellon = formData.get("BNY_Mellon");
+      const organizations = [];
+      if (universityOfFlorida != null){
+        organizations.push(universityOfFlorida);
+      }
+      if (jPMorganChaseCo != null){
+        organizations.push(jPMorganChaseCo);
+      }
+      if (bNYMellon != null){
+        organizations.push(bNYMellon);
+      }
+
+      const mentor = formData.get("mentor");
+      const mentee = formData.get("mentee");
+      let position = null;
+      if (mentor != null){
+        position = "mentor";
+      }
+      else if (mentee != null){
+        position = "mentee";
+      }
+
+      const matchingSequence = [];
+      document.querySelectorAll("input[type=checkbox]").forEach((checkbox) => {
+        if (checkbox.name != "University_of_Florida"
+          && checkbox.name != "JP_Morgan_Chase_&_Co."
+          && checkbox.name != "BNY_Mellon"
+        ){
+          matchingSequence.push(checkbox.checked); // true if checked, false otherwise
+        }
+      });
+
+      const err = await addUser(user.uid, user.displayName, user.email, firstName, lastName,
+        organizations, position, limitOrg, matchingSequence
+      );
+      if (err){
+        //handle the error
+      }
+      else{
+        navigate('/Community');
+      }
+
+  }
+
+      // const submit = async (formData) => {
+      //     console.log(`${user.uid} is submitting`);
+
+      //     const firstName = formData.get("first_name_input");
+      //     const lastName = formData.get("last_name_input");
+      //     console.log(`${firstName} and ${lastName}`);
+
+      //     const err = await addUser(user.uid, user.displayName, user.email, "Alexia", "RK");
+      //     if (err){
+      //       //handle the error
+      //     }
+      //     else{
+      //       navigate('/Community');
+      //     }
+      // };
   
   return (
     <head>
@@ -11,22 +87,21 @@ const Registration = () => {
 
     <div className="form">
     <div className="design"> 
-      
+      <img className="registration-pic" src={RegistrationDoodle}/>
     </div>
     <div className="registration">
       <main>
         <h1 className="Title">Matchmaking Info</h1>
-          <form onSubmit={saveUser}/*action="/another_rout_nav_to"*/>
-            <input id="first_name_input" placeholder="First Name" className="input"/>
-            <input id="last_name_input" placeholder="Last Name" className="input"/>
-            {/* <p>Organization:</p>
-            <label>Choose your organization:</label> */}
-            <select name="organization" id="organization">
-              <option value="University_of_Florida">University of Florida</option>
-              <option value="JP_Morgan_Chase_&_Co.">JP Morgan Chase & Co.</option>
-              <option value="BNY_Mellon">BNY Mellon</option>
-            </select>
-
+          <form action={submit}/*action="/another_rout_nav_to"*/>
+            <input name="first_name_input" placeholder="First Name" className="input"/>
+            <input name="last_name_input" placeholder="Last Name" className="input"/>
+            <label>Choose your organization:</label>
+            <input type="checkbox" id="University_of_Florida" name="University_of_Florida" value="University_of_Florida"/>
+            <label htmlFor="technology">University of Florida</label><br/>
+            <input type="checkbox" id="JP_Morgan_Chase_&_Co." name="JP_Morgan_Chase_&_Co." value="JP_Morgan_Chase_&_Co."/>
+            <label htmlFor="finance">JP Morgan Chase & Co.</label><br/>
+            <input type="checkbox" id="BNY_Mellon" name="BNY_Mellon" value="BNY_Mellon"/>
+            <label htmlFor="healthcare">BNY Mellon</label><br/>
 
             <p>Mentor/Mentee Questionnaire</p>
 
@@ -126,8 +201,8 @@ const Registration = () => {
             <input type="checkbox" id="phoneCall" name="phoneCall" value="phoneCall"/>
             <label htmlFor="phoneCall">Phone call</label><br/>
 
-
             <input type="submit" id="submit-button"/>
+
           </form>
       </main>
       </div>
