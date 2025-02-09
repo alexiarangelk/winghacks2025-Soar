@@ -81,3 +81,16 @@ select {
 p {
     padding:2vh;
 }
+
+.registration-pic {
+    width: 40vh;
+    height: auto;
+    border-radius: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.design{
+    display:flex;
+    align-items: center;
+}
