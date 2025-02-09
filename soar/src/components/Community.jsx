@@ -200,13 +200,13 @@ const Community = () => {
     <div className="page">
         {/* <h1>Community</h1> */}
         <h1 className="communities">Your Communities</h1>
-        <button onClick={post} className="post" type="button">
+        {/* <button onClick={post} className="post" type="button">
             Pretend you're posting
         </button>
         <button onClick={postReply} className="reply-to-post" type="button">
             Pretend you're replying
-        </button>
-        <button onClick={group1} className="group1" type="button">
+        </button> */}
+        {/* <button onClick={group1} className="group1" type="button">
             Back-End Programming Group
         </button>
         <button onClick={group2} className="group2" type="button">
@@ -217,7 +217,7 @@ const Community = () => {
         </button>
         <button onClick={organization4} className="organization4" type="button">
           Software Engineering
-        </button>
+        </button> */}
         <div className="left">
             <div className="largeWidget"> 
                 <div className="topLargeWidget" style={{background: "#43c6ac"}}>

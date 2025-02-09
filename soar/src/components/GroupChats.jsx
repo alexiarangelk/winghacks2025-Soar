@@ -19,6 +19,7 @@ const GroupChats = ({route}) => {
     const [topic, setTopic] = useState('Topic');
     const items = ['Item 1', 'Item 2', 'Item 3'];
     const [isTextBoxVisible, setIsTextBoxVisible] = useState(false);
+    const [isReplyTextBoxVisible, setIsReplyTextBoxVisible] = useState(false);
     const handleButtonClick = () => {
         setShowList(!showList);
     };
@@ -29,11 +30,23 @@ const GroupChats = ({route}) => {
         setIsTextBoxVisible(false);
     };
 
+    const openReplyTextBox = () => {
+        setIsReplyTextBoxVisible(true);
+    };
+    const handleCloseReplyTextBox = () => {
+        setIsReplyTextBoxVisible(false);
+    };
+
+
     const [inputValue, setInputValue] = useState('');
+    const [inputReplyValue, setInputReplyValue] = useState('');
     const [inputSubject, setInputSubject] = useState('');
 
     const handleInputChange = (event) => {
         setInputValue(event.target.value);
+    };
+    const handleReplyInputChange = (event) => {
+        setInputReplyValue(event.target.value);
     };
     const handleSubjectChange = (event) => {
         setInputSubject(event.target.value);
@@ -57,7 +70,7 @@ const GroupChats = ({route}) => {
             console.warn("Organization is missing!"); // Debugging message
             return;
         }
-        
+
         const organization = async () => {
             console.log(`${user.uid} is in ${org}`);
             const postIdsArray = await getOrgPosts(org);
@@ -112,6 +125,26 @@ const GroupChats = ({route}) => {
     }, [org]);
     
 
+    //post function
+    const [postId, setPostId] = useState("0");
+
+    const sendPost = async () => {
+        console.log(`${user.uid} is posting`);
+        const newId = await newPost(user.displayName, inputValue, inputSubject);
+        setPostId(newId);
+        console.log(`${postId} is your new post`);
+        if (newId != "0"){
+        let err = await addPostToId(user.uid, postId);
+        err = await addToOrg(org, postId);
+        }
+    }
+
+    //reply function
+    const postReply = async () => {
+        console.log(`${user.uid} is replying to a pos ${postId}`);
+        const err = await replyToPost(postId, user.displayName, inputReplyValue);
+    }
+
   return (
     <div className="page">
         <div className="title"> 
@@ -137,7 +170,7 @@ const GroupChats = ({route}) => {
                     
                     />
                     <button className="cancel" onClick={handleCloseTextBox}>x</button>
-                    <button className="submit">Submit</button>
+                    <button className="submit" onClick={sendPost}>Submit</button>
                     </div>
                     // <div>
                     //   <input
@@ -150,6 +183,7 @@ const GroupChats = ({route}) => {
                 )}
                 {/* {textValue && <p>Entered text: {textValue}</p>} */}
         </div>
+
         <tbody>
             {subjects.map((topic, index) => (
                 <div>
@@ -193,10 +227,11 @@ const GroupChats = ({route}) => {
         </tbody>
         
         {/* <div>
+
             <div className="conversations"> 
                 <div className="topic">
                     <p className="convoName">{convoName}</p>
-                    {inputValue}
+                    
                 </div>
             </div>
             <button className="expand" onClick={handleButtonClick}>
