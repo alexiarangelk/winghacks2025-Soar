@@ -1,3 +1,7 @@
+
+import {auth, getMyQuizResults } from './firebase';
+import {useAuthState} from 'react-firebase-hooks/auth';
+
 const my_response = ["mentee", "UF", "12345", true, true, true, true, true];
 const other_responses = [
     ["mentee", "UF", "4568", true, true, true, true, false],
@@ -10,6 +14,12 @@ const other_responses = [
 const MatchCalc = (the_user, potential_matches, limit) => {
     var all_percentages = [];
     var indiv_percentage = [];
+
+    const [user] = useAuthState(auth);
+
+    const myResponse = getMyQuizResults(user.uid).then((myResponse) =>{
+        //continue code here
+    });
     
     for (var i=0; i<potential_matches.length; i++) {
 

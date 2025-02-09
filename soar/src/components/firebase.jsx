@@ -250,4 +250,62 @@ export async function getPostMessages(postId){
   }
 }
 
+export async function getMyQuizResults(userId){
+  try {
+    const docRef = doc(db, "Users", userId); // Correct Firestore path
+    const docSnapshot = await getDoc(docRef); // Fetch single document
+
+    if (docSnapshot.exists()) {
+      let responseArray = [];
+
+      responseArray.push(docSnapshot.get("limitOrg"));
+      responseArray.push(docSnapshot.get("position"));
+      responseArray.push(docSnapshot.get("organizations")[0]);
+      responseArray.push(userId);
+      const matchingSequence = docSnapshot.get("matchingSequence");
+      for (let i = 0; i < matchingSequence.length; i++) {
+        responseArray.push(matchingSequence[i]);
+      }
+
+      return responseArray;
+
+    } else {
+      console.log("Document doesn't exist.");
+      return [];
+  }
+  } catch (error) {
+    console.error("Error fetching document:", error);
+    return [];
+  }
+}
+
+export async function getAllQuizResults(userId){
+  try {
+    const docRef = doc(db, "Users", userId); // Correct Firestore path
+    const docSnapshot = await getDoc(docRef); // Fetch single document
+
+    if (docSnapshot.exists()) {
+      let responseArray = [];
+
+      responseArray.push(docSnapshot.get("limitOrg"));
+      responseArray.push(docSnapshot.get("position"));
+      responseArray.push(docSnapshot.get("organizations")[0]);
+      responseArray.push(userId);
+      const matchingSequence = docSnapshot.get("matchingSequence");
+      for (let i = 0; i < matchingSequence.length; i++) {
+        responseArray.push(matchingSequence[i]);
+      }
+
+      return responseArray;
+
+    } else {
+      console.log("Document doesn't exist.");
+      return [];
+  }
+  } catch (error) {
+    console.error("Error fetching document:", error);
+    return [];
+  }
+}
+
 export default app;
