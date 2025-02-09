@@ -19,6 +19,7 @@ const GroupChats = ({route}) => {
     const [topic, setTopic] = useState('Topic');
     const items = ['Item 1', 'Item 2', 'Item 3'];
     const [isTextBoxVisible, setIsTextBoxVisible] = useState(false);
+    const [isReplyTextBoxVisible, setIsReplyTextBoxVisible] = useState(false);
     const handleButtonClick = () => {
         setShowList(!showList);
     };
@@ -29,11 +30,23 @@ const GroupChats = ({route}) => {
         setIsTextBoxVisible(false);
     };
 
+    const openReplyTextBox = () => {
+        setIsReplyTextBoxVisible(true);
+    };
+    const handleCloseReplyTextBox = () => {
+        setIsReplyTextBoxVisible(false);
+    };
+
+
     const [inputValue, setInputValue] = useState('');
+    const [inputReplyValue, setInputReplyValue] = useState('');
     const [inputSubject, setInputSubject] = useState('');
 
     const handleInputChange = (event) => {
         setInputValue(event.target.value);
+    };
+    const handleReplyInputChange = (event) => {
+        setInputReplyValue(event.target.value);
     };
     const handleSubjectChange = (event) => {
         setInputSubject(event.target.value);
@@ -48,7 +61,7 @@ const GroupChats = ({route}) => {
             console.warn("Organization is missing!"); // Debugging message
             return;
         }
-        
+
         const organization = async () => {
             console.log(`${user.uid} is in ${org}`);
             const postIdsArray = await getOrgPosts(org);
@@ -82,7 +95,24 @@ const GroupChats = ({route}) => {
         organization();
     }, [org]);
     
-    
+    //post function
+    let postId = "Hpl2BniLssNPPLw2yKur";
+
+    async function sendPost(){
+        console.log(`${user.uid} is posting`);
+        postId = await newPost(user.displayName, inputValue, inputSubject);
+        console.log(`${postId} is your new post`);
+        if (postId != "0"){
+        let err = await addPostToId(user.uid, postId);
+        err = await addToOrg(org, postId);
+        }
+    }
+
+    //reply function
+    async function postReply(){
+        console.log(`${user.uid} is replying to a pos ${postId}`);
+        const err = await replyToPost(postId, user.displayName, inputReplyValue);
+    }
 
   return (
     <div className="page">
@@ -109,7 +139,7 @@ const GroupChats = ({route}) => {
                     
                     />
                     <button className="cancel" onClick={handleCloseTextBox}>x</button>
-                    <button className="submit">Submit</button>
+                    <button className="submit" onClick={sendPost}>Submit</button>
                     </div>
                     // <div>
                     //   <input
@@ -122,11 +152,26 @@ const GroupChats = ({route}) => {
                 )}
                 {/* {textValue && <p>Entered text: {textValue}</p>} */}
         </div>
+        <button className="add" onClick={openReplyTextBox}>Add Reply</button>
+                {isReplyTextBoxVisible && (
+                    <div className="type-box">
+                    <input
+                        className="input-text"
+                        type="text"
+                        value={inputReplyValue}
+                        onChange={handleReplyInputChange}
+                        placeholder="Enter message here"
+                    
+                    />
+                    <button className="cancel" onClick={handleCloseReplyTextBox}>x</button>
+                    <button className="submit" onClick={postReply}>Submit</button>
+                    </div>
+                )}
         <div>
             <div className="conversations"> 
                 <div className="topic">
                     <p className="convoName">{convoName}</p>
-                    {inputValue}
+                    
                 </div>
             </div>
             <button className="expand" onClick={handleButtonClick}>
