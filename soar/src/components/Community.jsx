@@ -9,7 +9,8 @@ import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 //arrow-up-right
 
-import {auth, newPost, addPostToId, replyToPost, addToOrg } from './firebase';
+import {auth, newPost, addPostToId, replyToPost, addToOrg, 
+  getOrgPosts } from './firebase';
 import {useAuthState} from 'react-firebase-hooks/auth';
 
 const Community = () => {
@@ -22,22 +23,29 @@ const Community = () => {
     };
 
     let postId = "0";
-    let organization = 1;  //there's groups 1, 2, and 3
+    let organization = 1;  //there's groups 1, 2, 3, 4
 
     // Organizations
     const organization1 = async () => {
       console.log(`${user.uid} is in University of Florida`);
       organization = 1;
+      postId = await getOrgPosts("University of Florida");
     };
     const organization2 = async () => {
       console.log(`${user.uid} is in JP Morgan Chase & Co.`);
       organization = 2;
+      postId = await getOrgPosts("JP Morgan Chase & Co.");
     };
     const organization3 = async () => {
       console.log(`${user.uid} is in BNY Mellon`);
       organization = 3;
+      postId = await getOrgPosts("BNY Mellon");
     };
-
+    const organization4 = async () => {
+      console.log(`${user.uid} is in Software Engineering`);
+      organization = 4;
+      postId = await getOrgPosts("Software Engineering");
+    };
 
     // Post function
     const post = async () => {
@@ -55,6 +63,9 @@ const Community = () => {
           }
           else if (organization == 3){
             err = await addToOrg("BNY Mellon", postId);
+          }
+          else if (organization == 4){
+            err = await addToOrg("Software Engineering", postId);
           }
         }
     };
@@ -83,6 +94,9 @@ const Community = () => {
         </button>
         <button onClick={organization3} className="organization3" type="button">
           BNY Mellon
+        </button>
+        <button onClick={organization4} className="organization4" type="button">
+          Software Engineering
         </button>
         <div className="left">
             <div className="largeWidget"> 
