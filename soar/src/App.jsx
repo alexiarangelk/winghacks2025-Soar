@@ -8,9 +8,6 @@ import Registration from './components/Registration';
 function App() {
   const [user] = useAuthState(auth);
   return (
-    // user ? <Chat/> : <Login/>
-    //user ? <Routing/> : <Login/>
-
     user ? <Routing/> : <Login/>
   );
 }

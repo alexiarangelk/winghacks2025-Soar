@@ -27,7 +27,7 @@ const Community = () => {
     // Post function
     const post = async () => {
         console.log(`${user.uid} is posting`);
-        postId = await newPost(user.displayName, "helloooo");
+        postId = await newPost(user.displayName, "helloooo", "subject ey");
         if (postId != "0"){
           const err = await addPostToId(user.uid, postId);
         }
@@ -36,7 +36,7 @@ const Community = () => {
     // Reply function
     const postReply = async () => {
       console.log(`${user.uid} is replying to a post`);
-      const err = await replyToPost(postId, user.displayName, "helloooo");
+      const err = await replyToPost(postId, user.displayName, "I am a reply");
     };
 
     // Groups
