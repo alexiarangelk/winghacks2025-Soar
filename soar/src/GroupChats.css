@@ -3,19 +3,16 @@
 
 }
 .expand {
-    /* align-items: "center"; */
     border-radius: 100%;
     background-color: #FAF9F6;
     border: 0;
-    padding-left: 2vh;
-    padding-right: 2vh;
     float: right;
     margin-right: 40px;
-    margin-top: -10vh;
+    margin-top: -100px;
 }
-.expand p {
+/* .expand p {
     font-size: 50px;
-}
+} */
 .welcome {
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-weight: bold;
@@ -74,13 +71,13 @@
 }
 
 .cancel:hover {
-    background-color: #252524;
-    color: #FAF9F6;
+    background-color: #fc5a52;
+    color: #252524;
 }
 
 .submit:hover {
-    background-color: #252524;
-    color: #FAF9F6;
+    background-color: #fa8fa2;
+    color: #252525;
 }
 
 .input-text {
@@ -99,7 +96,7 @@
 }
 
 .conversations{
-    background-color: #f5e6b8;
+    background-color: #8ec7f8;
     padding: 1vw; 
     border-radius: 1em;
     /* max-height: 1000px; */
@@ -113,7 +110,7 @@
 }
 
 .show{
-    background-color: #f5e6b8;
+    background-color: #8ec7f8;
     padding: 1vw; 
     /* //margin: 1em; */
     border-radius: 1em;
@@ -151,10 +148,18 @@
     border-radius: 10px;
 }
 .add:hover {
-    background-color: #dcdbd7af;
+    background-color: #27b45989;
 }
 .convoName {
     font-size: 20px;
     font-weight: bold;
-    margin-top:25px
+    margin-top: 14px;
+}
+.controls {
+    font-size: 40px;
+    font-style: bold;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }

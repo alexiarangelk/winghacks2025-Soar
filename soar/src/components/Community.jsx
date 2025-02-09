@@ -23,6 +23,7 @@ const Community = () => {
     };
 
     let postId = "0";
+
     let organization = 1;  //there's groups 1, 2, 3, 4
 
     // Organizations
@@ -154,7 +155,6 @@ const Community = () => {
     // Post function
     const post = async () => {
         console.log(`${user.uid} is posting`);
-
         postId = await newPost(user.displayName, "helloooo", "subject ey");
         if (postId != "0"){
           let err = await addPostToId(user.uid, postId);
@@ -180,24 +180,35 @@ const Community = () => {
       const err = await replyToPost(postId, user.displayName, "I am a reply");
     };
 
+    // Groups
+    const group1 = async () => {
+      console.log(`${user.uid} is in group1`);
+    };
+    const group2 = async () => {
+      console.log(`${user.uid} is in group2`);
+    };
+    const group3 = async () => {
+      console.log(`${user.uid} is in group3`);
+    };
+
   return (
     <div className="page">
         {/* <h1>Community</h1> */}
-        <h1 className="communities">Communities</h1>
+        <h1 className="communities">Your Communities</h1>
         <button onClick={post} className="post" type="button">
             Pretend you're posting
         </button>
         <button onClick={postReply} className="reply-to-post" type="button">
             Pretend you're replying
         </button>
-        <button onClick={organization1} className="organization1" type="button">
-          University of Florida
+        <button onClick={group1} className="group1" type="button">
+            Back-End Programming Group
         </button>
-        <button onClick={organization2} className="organization2" type="button">
-          JP Morgan Chase & Co.
+        <button onClick={group2} className="group2" type="button">
+            McDonalds
         </button>
-        <button onClick={organization3} className="organization3" type="button">
-          BNY Mellon
+        <button onClick={group3} className="group3" type="button">
+            WingHacks
         </button>
         <button onClick={organization4} className="organization4" type="button">
           Software Engineering
@@ -211,7 +222,7 @@ const Community = () => {
                     <div className="bottomLargeWidget" style={{background: "linear-gradient(185deg, #43c6ac 30%, #f8ffae"}}>
                     <div className="barsBottom">
                             <div className="descrip">20,000 members</div>
-                            <div className="descrip">Joined: 2/2/24</div>
+                            <div className="descrip"> Joined: 2/2/24</div>
                         </div>
                     </div>
                     <button className="launchbutton" onClick={handleClick}>
@@ -224,7 +235,7 @@ const Community = () => {
                     <div className="topLargeWidget2" style={{background: "#4673b6"}}>
                         <div className="bars">
                             <div className="descrip">15 members</div>
-                            <div className="descrip">Joined: 12/1/24</div>
+                            <div className="descrip"> Joined: 12/1/24</div>
                         </div>
                     </div>
                     <button className="launchbutton2" onClick={handleClick}>
@@ -240,10 +251,10 @@ const Community = () => {
                     <p className="largeName">Leadership</p>
                 </div>
                 <div className="bottomStyle">
-                    <div className="bottomLargeWidget" style={{background: "linear-gradient(185deg, #b6c1f6 30%, #ffc3a0"}}>
+                    <div className="bottomLargeWidget" style={{background: "linear-gradient(180deg, #b6c1f6 30%,#9360bf"}}>
                         <div className="barsBottom">
                             <div className="descrip">100 members</div>
-                            <div className="descrip">Joined: 3/6/24</div>
+                            <div className="descrip"> Joined: 3/6/24</div>
                         </div>
                     </div>
                     <button className="launchbutton" onClick={handleClick} >
@@ -256,7 +267,7 @@ const Community = () => {
                     <div className="topLargeWidget2" style={{background: "#a7f4dd"}}>
                         <div className="bars">
                             <div className="descrip">200 members</div>
-                            <div className="descrip">Joined: 1/1/24</div>
+                            <div className="descrip"> Joined: 1/1/24</div>
                         </div>
                     </div>
                     <button className="launchbutton2" onClick={handleClick} >
@@ -264,7 +275,7 @@ const Community = () => {
                     </button>
                 </div>
                 <div className="bottomLargeWidget2" style={{background: "linear-gradient(185deg, #a7f4dd 35%, #105549"}}>
-                    <p className="largeName2">Software Development</p>
+                    <p className="largeName2">Software Engineering</p>
                 </div>    
             </div>
         </div>

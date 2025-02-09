@@ -1,32 +1,19 @@
-// import { NavLink, Link } from "react-router";
-
-// function Header() {
-//   return (
-//     <nav>
-//       {/* NavLink makes it easy to show active states */}
-//       <NavLink
-//         to="/Community"
-//         className={({ isActive }) =>
-//           isActive ? "active" : ""
-//         }
-//       >
-//         Community
-//       </NavLink>
-
-//       <Link to="/concerts/salt-lake-city">Concerts</Link>
-//     </nav>
-//   );
-// }
 import { Link } from "react-router-dom";
 //import reactLogo from './assets/react.svg'
 import '../index.css'
 import FeatherIcon from 'feather-icons-react';
+import {auth} from './firebase';
+
+// Signout function
+const signOut = () => {
+    auth.signOut();
+};
 
 const Navbar = () => {
   return (
     <div className="navbar">
-      <h1>SOAR</h1>
-        <div>
+      <h1 className="appName">SOAR</h1>
+        <div className="line">
           <div className="temp">
             <Link to='/Community' className="linkrouter"><li>Community</li></Link>
             </div>
@@ -34,8 +21,8 @@ const Navbar = () => {
             <Link to='/Chat' className="linkrouter"><li>Chat</li></Link>
             </div>
           </div>
-      <button className="profile">
-        <FeatherIcon icon="user" />
+      <button className="power" onClick={signOut}>
+        <FeatherIcon icon="power" />
       </button>
     </div>
   );

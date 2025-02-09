@@ -77,7 +77,7 @@ const GroupChats = () => {
                 </div>
             </div>
             <button className="expand" onClick={handleButtonClick}>
-                <p>{showList ? '-' : '+'} </p>
+                <p className="controls">{showList ? '-' : '+'}</p>
             </button>
             {showList && (
             <ul className="show">
