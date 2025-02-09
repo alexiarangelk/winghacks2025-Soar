@@ -44,7 +44,13 @@ const GroupChats = ({route}) => {
 
 
     useEffect(() => {
+        if (!org) {
+            console.warn("Organization is missing!"); // Debugging message
+            return;
+        }
+        
         const organization = async () => {
+            console.log(`${user.uid} is in ${org}`);
             const postIdsArray = await getOrgPosts(org);
             for (let i = 0; i < postIdsArray.length ; i++){
             /* 
@@ -74,7 +80,7 @@ const GroupChats = ({route}) => {
         }
         };
         organization();
-    }, []);
+    }, [org]);
     
     
 
