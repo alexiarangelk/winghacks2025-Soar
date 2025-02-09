@@ -48,6 +48,10 @@ const GroupChats = ({route}) => {
     const [info, setItems] = useState([]);
     const [subjects, setSubjects] = useState([]);
     let tempArray = [];
+    function addElement(subject) {
+        setSubjects(prevItems => [...prevItems, subject]);
+
+    }
     useEffect(() => {
         if (!org) {
             console.warn("Organization is missing!"); // Debugging message
@@ -75,11 +79,12 @@ const GroupChats = ({route}) => {
                 const username = messageArray[j].username;
                 const subject = messageArray[j].subject;
                 const message = messageArray[j].message;
-                setSubjects(prevItems => [...prevItems, subject]);
+                addElement(subject);
+                //setSubjects(prevItems => [...prevItems, subject]);
                 //setItems(prevItems => [...prevItems, time]);
                 setItems(prevItems => [...prevItems, username]);
                 setItems(prevItems => [...prevItems, message]);
-                setItems(prevItems => [...prevItems, messageArray.length])
+                // setItems(prevItems => [...prevItems, messageArray.length])
                 tempArray.push(subject);
                 tempArray.push(time);
                 tempArray.push(username);
@@ -147,7 +152,7 @@ const GroupChats = ({route}) => {
         </div>
         <tbody>
             {subjects.map((topic, index) => (
-                <>
+                <div>
                 <div className="conversations"> 
                      <div className="topic">
                          <p className="convoName">{topic}</p>
@@ -156,16 +161,16 @@ const GroupChats = ({route}) => {
                  <button className="expand" onClick={handleButtonClick}>
                      <p className="controls">{showList ? '-' : '+'}</p>
                  </button>
-                 {/* {showList && (
+                 {showList && (
                     <ul className="show">
                         <p><li key={index}>{"Name: "}{topic}</li></p>
                         <p><li key={index}>{"Name: "}{topic}</li></p>
                         <p><li key={index}>{"Name: "}{topic}</li></p>
                     </ul>
-                    )} */}
+                    )}
                 {/* {info.map((item, index) => ( */}
                     
-                <div>
+                {/* <div>
                     <div className="conversations"> 
                         <div className="topic">
                             <p className="convoName">{topic++}</p>
@@ -173,7 +178,7 @@ const GroupChats = ({route}) => {
                     </div>
                     <button className="expand" onClick={handleButtonClick}>
                         <p className="controls">{showList ? '-' : '+'}</p>
-                    </button>
+                    </button> */}
                     {/* {showList && (
                     <ul className="show">
                         <p>{items.map((item, index) => (
@@ -181,8 +186,8 @@ const GroupChats = ({route}) => {
                         ))}</p>
                     </ul>
                     )} */}
+                {/* </div> */}
                 </div>
-                </>
                 // ))} 
             ))} 
         </tbody>
