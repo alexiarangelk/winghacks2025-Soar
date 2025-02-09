@@ -14,13 +14,17 @@ import {auth, newPost, addPostToId, replyToPost, addToOrg,
 import {useAuthState} from 'react-firebase-hooks/auth';
 
 const Community = () => {
+    
     const [user] = useAuthState(auth);
-    const communityName = 'worldCommunity';
+    const [orgName, setOrgName] = useState('University of Florida');
 
     const navigate = useNavigate();
-    const handleClick = () => {
-        navigate('/GroupChats');
+
+    const handleClick = (event) => {
+        const orgName = event.target.id;
+        navigate('/GroupChats', { state: { org: orgName } });
     };
+
 
     let postId = "0";
 
@@ -216,7 +220,7 @@ const Community = () => {
         <div className="left">
             <div className="largeWidget"> 
                 <div className="topLargeWidget" style={{background: "#43c6ac"}}>
-                    <p className="largeName">Software Development</p>
+                    <p className="largeName">University of Florida</p>
                 </div>
                 <div className="bottomStyle">
                     <div className="bottomLargeWidget" style={{background: "linear-gradient(185deg, #43c6ac 30%, #f8ffae"}}>
@@ -225,7 +229,7 @@ const Community = () => {
                             <div className="descrip"> Joined: 2/2/24</div>
                         </div>
                     </div>
-                    <button className="launchbutton" onClick={handleClick}>
+                    <button className="launchbutton" onClick={handleClick} id="University of Florida">
                         <FeatherIcon icon="arrow-up-right" />
                     </button>
                 </div>
@@ -238,17 +242,17 @@ const Community = () => {
                             <div className="descrip"> Joined: 12/1/24</div>
                         </div>
                     </div>
-                    <button className="launchbutton2" onClick={handleClick}>
+                    <button className="launchbutton2" id="" onClick={handleClick}>
                         <FeatherIcon icon="arrow-up-right" />
                     </button>
                 </div>
                 <div className="bottomLargeWidget2" style={{background: "linear-gradient(185deg, #4673b6 30%,rgb(179, 247, 247)"}}>
-                    <p className="largeName2">Software Development</p>
+                    <p className="largeName2">JP Morgan Chase & Co.</p>
                 </div>    
             </div>
             <div className="largeWidget"> 
                 <div className="topLargeWidget" style={{background: "#b6c1f6"}}>
-                    <p className="largeName">Leadership</p>
+                    <p className="largeName">BNY Mellon</p>
                 </div>
                 <div className="bottomStyle">
                     <div className="bottomLargeWidget" style={{background: "linear-gradient(180deg, #b6c1f6 30%,#9360bf"}}>

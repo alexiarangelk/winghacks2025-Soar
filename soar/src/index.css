@@ -64,15 +64,17 @@
   color: #000;
   /* padding: 12px 25px; */
   padding: 12px 17px;
-  border: 2;
+  border: 9;
   outline: 0;
   border-radius: 100%;
   border-color: #000;
+  border-width: 2px;
+
   /* font-size: 16px; */
   cursor: pointer;
 }
 .navbar button:hover {
-  background-color: #000;
+  background-color: #252525;
   color: #fff;
 }
 .container {
