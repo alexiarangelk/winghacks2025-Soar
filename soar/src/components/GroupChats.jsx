@@ -99,7 +99,7 @@ const GroupChats = ({route}) => {
                 setItems(prevItems => [...prevItems, message]);
                 // setItems(prevItems => [...prevItems, messageArray.length])
                 tempArray.push(subject);
-                tempArray.push(time);
+                //tempArray.push(time);
                 tempArray.push(username);
                 tempArray.push(message);
                 console.log(`Initial Post: ${time}, ${username}, ${subject}, ${message}`);
@@ -197,7 +197,7 @@ const GroupChats = ({route}) => {
                  </button>
                  {showList && (
                     <ul className="show">
-                        <p><li key={index}>{"Name: "}{topic}</li></p>
+                        <p><li key={index}>{"Name: "}{topic.next()}</li></p>
                         <p><li key={index}>{"Name: "}{topic}</li></p>
                         <p><li key={index}>{"Name: "}{topic}</li></p>
                     </ul>
