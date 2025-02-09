@@ -48,7 +48,7 @@ const GroupChats = ({route}) => {
             console.warn("Organization is missing!"); // Debugging message
             return;
         }
-        
+
         const organization = async () => {
             console.log(`${user.uid} is in ${org}`);
             const postIdsArray = await getOrgPosts(org);
@@ -82,7 +82,16 @@ const GroupChats = ({route}) => {
         organization();
     }, [org]);
     
-    
+    //post function
+    let postId = "0";
+    async function sendPost(){
+        console.log(`${user.uid} is posting`);
+        postId = await newPost(user.displayName, inputValue, inputSubject);
+        if (postId != "0"){
+        let err = await addPostToId(user.uid, postId);
+        err = await addToOrg(org, postId);
+        }
+    }
 
   return (
     <div className="page">
@@ -109,7 +118,7 @@ const GroupChats = ({route}) => {
                     
                     />
                     <button className="cancel" onClick={handleCloseTextBox}>x</button>
-                    <button className="submit">Submit</button>
+                    <button className="submit" onClick={sendPost}>Submit</button>
                     </div>
                     // <div>
                     //   <input
@@ -126,7 +135,7 @@ const GroupChats = ({route}) => {
             <div className="conversations"> 
                 <div className="topic">
                     <p className="convoName">{convoName}</p>
-                    {inputValue}
+                    
                 </div>
             </div>
             <button className="expand" onClick={handleButtonClick}>
