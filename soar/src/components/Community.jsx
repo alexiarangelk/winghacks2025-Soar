@@ -243,7 +243,7 @@ const Community = () => {
                             <div className="descrip"> Joined: 12/1/24</div>
                         </div>
                     </div>
-                    <button className="launchbutton2" id="" onClick={handleClick}>
+                    <button className="launchbutton2" id="JP Morgan Chase & Co." onClick={handleClick}>
                         <FeatherIcon icon="arrow-up-right" />
                     </button>
                 </div>
@@ -262,7 +262,7 @@ const Community = () => {
                             <div className="descrip"> Joined: 3/6/24</div>
                         </div>
                     </div>
-                    <button className="launchbutton" onClick={handleClick} >
+                    <button className="launchbutton" onClick={handleClick} id="BNY Mellon">
                         <FeatherIcon icon="arrow-up-right" />
                     </button>
                 </div>
@@ -275,7 +275,7 @@ const Community = () => {
                             <div className="descrip"> Joined: 1/1/24</div>
                         </div>
                     </div>
-                    <button className="launchbutton2" onClick={handleClick} >
+                    <button className="launchbutton2" onClick={handleClick} id="Software Engineering" >
                         <FeatherIcon icon="arrow-up-right" />
                     </button>
                 </div>

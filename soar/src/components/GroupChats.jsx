@@ -56,6 +56,15 @@ const GroupChats = ({route}) => {
     const[convoName, setConvoName] = useState('How to network?');
 
 
+    //let postIdsArray = [];
+    const [array, setIds] = useState([]);
+    const [info, setItems] = useState([]);
+    const [subjects, setSubjects] = useState([]);
+    let tempArray = [];
+    function addElement(subject) {
+        setSubjects(prevItems => [...prevItems, subject]);
+
+    }
     useEffect(() => {
         if (!org) {
             console.warn("Organization is missing!"); // Debugging message
@@ -65,6 +74,8 @@ const GroupChats = ({route}) => {
         const organization = async () => {
             console.log(`${user.uid} is in ${org}`);
             const postIdsArray = await getOrgPosts(org);
+            setIds(postIdsArray);
+            // size = postIdsArray.length; 
             for (let i = 0; i < postIdsArray.length ; i++){
             /* 
             fyi, the array looks like
@@ -81,6 +92,16 @@ const GroupChats = ({route}) => {
                 const username = messageArray[j].username;
                 const subject = messageArray[j].subject;
                 const message = messageArray[j].message;
+                addElement(subject);
+                //setSubjects(prevItems => [...prevItems, subject]);
+                //setItems(prevItems => [...prevItems, time]);
+                setItems(prevItems => [...prevItems, username]);
+                setItems(prevItems => [...prevItems, message]);
+                // setItems(prevItems => [...prevItems, messageArray.length])
+                tempArray.push(subject);
+                tempArray.push(time);
+                tempArray.push(username);
+                tempArray.push(message);
                 console.log(`Initial Post: ${time}, ${username}, ${subject}, ${message}`);
                 }
                 else{
@@ -88,13 +109,22 @@ const GroupChats = ({route}) => {
                 const username = messageArray[j].username;
                 const message = messageArray[j].message;
                 console.log(`Reply Post: ${time}, ${username}, ${message}`);
+                //setItems(prevItems => [...prevItems, time]);
+                setItems(prevItems => [...prevItems, username]);
+                setItems(prevItems => [...prevItems, message]);
+                tempArray.push(time);
+                tempArray.push(username);
+                tempArray.push(message);
                 }
             }
         }
+        //setInfo(tempArray);
+
         };
         organization();
     }, [org]);
     
+
     //post function
     const [postId, setPostId] = useState("0");
 
@@ -153,22 +183,51 @@ const GroupChats = ({route}) => {
                 )}
                 {/* {textValue && <p>Entered text: {textValue}</p>} */}
         </div>
-        <button className="add" onClick={openReplyTextBox}>Add Reply</button>
-                {isReplyTextBoxVisible && (
-                    <div className="type-box">
-                    <input
-                        className="input-text"
-                        type="text"
-                        value={inputReplyValue}
-                        onChange={handleReplyInputChange}
-                        placeholder="Enter message here"
+
+        <tbody>
+            {subjects.map((topic, index) => (
+                <div>
+                <div className="conversations"> 
+                     <div className="topic">
+                         <p className="convoName">{topic}</p>
+                     </div>
+                 </div>
+                 <button className="expand" onClick={handleButtonClick}>
+                     <p className="controls">{showList ? '-' : '+'}</p>
+                 </button>
+                 {showList && (
+                    <ul className="show">
+                        <p><li key={index}>{"Name: "}{topic}</li></p>
+                        <p><li key={index}>{"Name: "}{topic}</li></p>
+                        <p><li key={index}>{"Name: "}{topic}</li></p>
+                    </ul>
+                    )}
+                {/* {info.map((item, index) => ( */}
                     
-                    />
-                    <button className="cancel" onClick={handleCloseReplyTextBox}>x</button>
-                    <button className="submit" onClick={postReply}>Submit</button>
+                {/* <div>
+                    <div className="conversations"> 
+                        <div className="topic">
+                            <p className="convoName">{topic++}</p>
+                        </div>
                     </div>
-                )}
-        <div>
+                    <button className="expand" onClick={handleButtonClick}>
+                        <p className="controls">{showList ? '-' : '+'}</p>
+                    </button> */}
+                    {/* {showList && (
+                    <ul className="show">
+                        <p>{items.map((item, index) => (
+                        <li key={index}>{"Name: "}{item}</li>
+                        ))}</p>
+                    </ul>
+                    )} */}
+                {/* </div> */}
+                </div>
+                // ))} 
+            ))} 
+        </tbody>
+        
+        {/* <div>
+
             <div className="conversations"> 
                 <div className="topic">
                     <p className="convoName">{convoName}</p>
@@ -185,7 +244,7 @@ const GroupChats = ({route}) => {
             ))}</p>
             </ul>
             )}
-        </div>
+        </div> */}
     </div>
   )
 }
