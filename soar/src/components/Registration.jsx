@@ -3,6 +3,7 @@ import saveUser from "./saveUser";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from 'react-router-dom'
 import '../registration.css';
+import RegistrationDoodle from '../assets/registration-doodle-plane.png';
 
 const Registration = () => {
   const [user] = useAuthState(auth);
@@ -27,7 +28,7 @@ const Registration = () => {
 
     <div className="form">
     <div className="design"> 
-      
+      <img className="registration-pic" src={RegistrationDoodle}/>
     </div>
     <div className="registration">
       <main>
