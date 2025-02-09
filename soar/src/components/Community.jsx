@@ -13,6 +13,7 @@ const Community = () => {
     const [user] = useAuthState(auth);
     const communityName = 'worldCommunity';
     let postId = "0";
+    let group = 1;  //there's groups 1, 2, and 3
 
     // Post function
     const post = async () => {
@@ -29,6 +30,17 @@ const Community = () => {
       const err = await replyToPost(postId, user.displayName, "helloooo");
     };
 
+    // Groups
+    const group1 = async () => {
+      console.log(`${user.uid} is in group1`);
+    };
+    const group2 = async () => {
+      console.log(`${user.uid} is in group2`);
+    };
+    const group3 = async () => {
+      console.log(`${user.uid} is in group3`);
+    };
+
   return (
     <div className="page">
         <button onClick={post} className="post" type="button">
@@ -36,6 +48,15 @@ const Community = () => {
         </button>
         <button onClick={postReply} className="reply-to-post" type="button">
             Pretend you're replying
+        </button>
+        <button onClick={group1} className="group1" type="button">
+            Back-End Programming Group
+        </button>
+        <button onClick={group2} className="group2" type="button">
+            McDonalds
+        </button>
+        <button onClick={group3} className="group3" type="button">
+            WingHacks
         </button>
         <div className="left">
             <div className="largeWidget"> 

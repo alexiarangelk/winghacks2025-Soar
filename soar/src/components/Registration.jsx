@@ -1,7 +1,23 @@
-import { addUser } from "./firebase";
+import { auth, addUser } from "./firebase";
 import saveUser from "./saveUser";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { useNavigate } from 'react-router-dom'
 
 const Registration = () => {
+  const [user] = useAuthState(auth);
+  const navigate = useNavigate();
+
+  // Post function
+      const submit = async () => {
+          console.log(`${user.uid} is submitting`);
+          const err = await addUser(user.uid, user.displayName, user.email, "Alexia", "RK");
+          if (err){
+            //handle the error
+          }
+          else{
+            navigate('/Community');
+          }
+      };
   
   return (
     <head>
@@ -127,7 +143,7 @@ const Registration = () => {
             <label htmlFor="phoneCall">Phone call</label><br/>
 
 
-            <input type="submit" id="submit-button"/>
+            <input type="submit" onClick={submit} id="submit-button"/>
           </form>
       </main>
     </>
