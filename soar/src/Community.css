@@ -1,38 +1,32 @@
 .page {
     background-color: #FAF9F6;
     padding: 15px 7%; 
-
 } 
+.communities {
+    margin-bottom: 2vh;;
+}
 .topLargeWidget {
     background-color: #f5e6b8;
     padding: 1vw; 
-
-    /* //margin: 1em; */
     border-radius: 1em;
-    max-width: 500px;
-    /* max-height: 1000px; */
-    min-width: 300px;
-    min-height: 200px;
+    /* max-width: 500vw; */
+    min-width: 3vw;
+    min-height: 22vh;
     margin-bottom: -30px;
 }
 .topLargeWidget2 {
     background-color: #f5e6b8;
     padding: 1vw; 
-    /* //margin: 1em; */
     border-radius: 1em;
     min-width: 250px;
     max-height: 100px;
     margin-bottom: -30px;
-    /* margin-top: -30vh; */
 }
 .bottomLargeWidget2 {
     background-color: #f5e6b8;
     padding: 1vw; 
-
-    /* //margin: 1em; */
     border-radius: 1em;
     max-width: 500px;
-    /* max-height: 1000px; */
     min-width: 300px;
     min-height: 200px;
     margin-top: 1vh;
@@ -55,44 +49,13 @@
     background-color: #43350b;
 
 }
-.topSmallWidget {
-    background-color: #f5b8db;
-    padding: 1vw; 
-    /* //margin: 1em; */
-    border-radius: 1em;
-    min-width: 250px;
-    max-height: 100px;
-    margin-top: -30vh;
-}
-.bottomSmallWidget {
-    background-color: #f5b8db;
-    padding: 1vw; 
-    /* //margin: 1em; */
-    border-radius: 1em;
-    min-width: 250px;
-    max-height: 100px;
-    margin-top: -30vh;
-}
-.launchbuttonSmall {
-    margin-left: 2vh;
-    margin-top: 13%;
-    border-radius: 100%;
-    background-color: #1b1b1b;
-    min-width: 50px;
-    min-height: 50px;
-    max-width: 100px;
-    max-height: 300px;
-    color: #FAF9F6;
-}
 .bottomLargeWidget {
     background-color: #f5e6b8;
     padding: 1vw; 
-    /* //margin: 1em; */
     border-radius: 1em;
-    min-width: 250px;
-    max-height: 100px;
-    /* margin-top: -30vh; */
-
+    min-width: 13vw;
+    max-height: 4wh;
+    
 }
 .bottomStyle {
     display: inline-flex;
@@ -117,16 +80,27 @@
 }
 .left {
     display: inline-flex;
-    /* justify-items: flex-start; */
-    /* margin-right: 2vw; */
-    /* justify-content: space-between; */
 }
 .largeWidget {
     margin-right: 3vw;
 } 
-.smallWidget {
-    margin-left: 50%;
+.bars {
+    display: inline-flex;
+}
+.barsBottom {
+    display: inline-flex;
+    margin-top: 2vh;
+}
+.descrip {
+    font-size: 15px;
+    border-radius: 20px;
+    background-color: #FAF9F6;
+    text-align: center;
+    width: auto;
+    padding: 0.2vw;
+    margin-right: 2%;
+    opacity: 0.8;
+    /* margin-right: 4px; */
 }
 
 /* FAF9F6 */ 
-/* //scale down = min */

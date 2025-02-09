@@ -2,6 +2,7 @@ import { auth, addUser } from "./firebase";
 import saveUser from "./saveUser";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useNavigate } from 'react-router-dom'
+import '../registration.css';
 
 const Registration = () => {
   const [user] = useAuthState(auth);
@@ -24,25 +25,22 @@ const Registration = () => {
       <title>Account Registration</title>
     </head>,
 
-    <>
-      <main>
+    <div className="form">
+    <div className="design"> 
       
-        <p>User Information</p>
+    </div>
+    <div className="registration">
+      <main>
+        <h1 className="Title">Matchmaking Info</h1>
           <form onSubmit={saveUser}/*action="/another_rout_nav_to"*/>
-            <p>First Name:</p>
-            <input id="first_name_input"/>
-
-            <p>Last Name:</p>
-            <input id="last_name_input"/>
-
-            <p>Organization:</p>
+            <input id="first_name_input" placeholder="First Name" className="input"/>
+            <input id="last_name_input" placeholder="Last Name" className="input"/>
             <label>Choose your organization:</label>
             <select name="organization" id="organization">
               <option value="University_of_Florida">University of Florida</option>
               <option value="JP_Morgan_Chase_&_Co.">JP Morgan Chase & Co.</option>
               <option value="BNY_Mellon">BNY Mellon</option>
             </select>
-
 
             <p>Mentor/Mentee Questionnaire</p>
 
@@ -142,11 +140,12 @@ const Registration = () => {
             <input type="checkbox" id="phoneCall" name="phoneCall" value="phoneCall"/>
             <label htmlFor="phoneCall">Phone call</label><br/>
 
-
             <input type="submit" onClick={submit} id="submit-button"/>
+
           </form>
       </main>
-    </>
+      </div>
+    </div>
   )
 }
 

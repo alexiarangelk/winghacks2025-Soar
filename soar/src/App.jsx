@@ -4,6 +4,7 @@ import {useAuthState} from 'react-firebase-hooks/auth';
 import Login from './components/login';
 import Registration from './components/Registration';
 import Routing from './components/routing';
+import Registration from './components/Registration';
 
 function App() {
   const [user] = useAuthState(auth);

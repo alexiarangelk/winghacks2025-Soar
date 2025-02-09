@@ -5,6 +5,11 @@ import { Routes, Route, useLocation } from 'react-router-dom'
 import Chat from './chat';
 import Registration from './Registration';
 
+import GroupChats from './GroupChats';
+
+import PublicPosts from './PublicPosts'
+
+
 const Routing = () => {
   const location = useLocation(); // Get current route location
 
@@ -15,6 +20,8 @@ const Routing = () => {
         <Route path="/Community" element={<Community />} />
         <Route path="/Chat" element={<Chat />} />
         <Route path="/Registration" element={<Registration />}/>
+        <Route path="/PublicPosts" element={<PublicPosts />} />
+        <Route path="/GroupChats" element={<GroupChats />} />
       </Routes>
     </div>
   )
