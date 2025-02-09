@@ -21,7 +21,8 @@ const Community = () => {
     const navigate = useNavigate();
 
     const handleClick = (event) => {
-        const orgName = event.target.id;
+        const orgName = event.currentTarget.id;
+        console.log(`our org name is ${orgName}`);
         navigate('/GroupChats', { state: { org: orgName } });
     };
 

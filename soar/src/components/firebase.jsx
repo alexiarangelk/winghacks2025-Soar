@@ -209,6 +209,8 @@ export async function getOrgPosts(orgId){
     console.error("Error fetching document:", error);
     return [];
   }
+
+  return[];
 }
 
 export async function getPostMessages(postId){
