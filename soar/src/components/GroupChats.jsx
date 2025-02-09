@@ -96,20 +96,21 @@ const GroupChats = ({route}) => {
     }, [org]);
     
     //post function
-    let postId = "Hpl2BniLssNPPLw2yKur";
+    const [postId, setPostId] = useState("0");
 
-    async function sendPost(){
+    const sendPost = async () => {
         console.log(`${user.uid} is posting`);
-        postId = await newPost(user.displayName, inputValue, inputSubject);
+        const newId = await newPost(user.displayName, inputValue, inputSubject);
+        setPostId(newId);
         console.log(`${postId} is your new post`);
-        if (postId != "0"){
+        if (newId != "0"){
         let err = await addPostToId(user.uid, postId);
         err = await addToOrg(org, postId);
         }
     }
 
     //reply function
-    async function postReply(){
+    const postReply = async () => {
         console.log(`${user.uid} is replying to a pos ${postId}`);
         const err = await replyToPost(postId, user.displayName, inputReplyValue);
     }
