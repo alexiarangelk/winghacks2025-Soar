@@ -43,15 +43,20 @@ export async function newUserCheck(userId) {
   return userExists;
 }
 
-export async function addUser(userId, username, email, firstName, lastName) {
+export async function addUser(userId, username, email, firstName, lastName, 
+  organizations, position, limitOrg, matchingSequence) {
   try {
+
     await setDoc(doc(db, "Users", userId), {
       username: username,
       email: email,
       firstName: firstName,
       lastName: lastName,
+      position: position,
+      limitOrg: limitOrg,
       posts: [],
-      groups: ["WingHacks", "McDonalds", "Back-End Programming"]
+      organizations: organizations,
+      matchingSequence: matchingSequence
     });
     return false;
   } catch (error) {
@@ -60,13 +65,14 @@ export async function addUser(userId, username, email, firstName, lastName) {
   }
 }
 
-export async function newPost(username, message){
+export async function newPost(username, message, subject){
   try {
 
     const docRef = await addDoc(collection(db, "Posts"), {
       1: {
         timestamp: Timestamp.fromDate(new Date()),
         username: username,
+        subject: subject,
         message: message,
       },
       count: 1
